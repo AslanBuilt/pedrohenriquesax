@@ -26,7 +26,7 @@ export default async function OpengraphImage() {
     /* Caminho relativo estático (não `process.cwd()` + join): assim o tracing
        do Turbopack enxerga exatamente este arquivo, em vez de concluir que a
        rota lê o projeto inteiro. */
-    const buf = await readFile(new URL("../../public/fotos/hero.jpg", import.meta.url));
+    const buf = await readFile(new URL("../../public/fotos/hero-v2.jpg", import.meta.url));
     photo = `data:image/jpeg;base64,${Buffer.from(buf).toString("base64")}`;
   } catch {
     // Sem a foto o cartão ainda sai: fundo do tema, tipografia igual.

@@ -74,6 +74,10 @@ Acesso local do painel: `pedro@pedrolucenasax.com` / `pedro2026` (trocar em prod
 9. **Um botão de contratar visível por vez.** No topo da home, o do herói; depois de rolar e nas
    outras páginas, o do cabeçalho; no celular, a barra fixa. Em `/mentoria` ele abre em aula.
 
+10. **Sem produto ativo, a loja some inteira:** Loja, carrinho e os links de conta só aparecem com
+    produto ou com cliente logado. O e-mail de pagamento confirmado nunca foi testado em produção:
+    testar com a primeira compra real.
+
 ## Design
 
 Referências do Pedro em 05/11/2026: ameliasaz.com (simplicidade, grade de fotos) e livesax.com.br
@@ -81,7 +85,7 @@ Referências do Pedro em 05/11/2026: ameliasaz.com (simplicidade, grade de fotos
 
 - Tipografia: **DM Serif Display** nos títulos, **Hanken Grotesk** no corpo. Sem letra cursiva:
   testada no nome e rejeitada em 05/11/2026. Bodoni também: difícil de ler sobre o preto.
-- **Herói:** `hero.jpg` a cores em tela cheia, ancorada no topo para a cabeça ficar abaixo do menu.
+- **Herói:** `hero-v2.jpg` (hero.jpg com o preto limpo) a cores em tela cheia, ancorada no topo para a cabeça ficar abaixo do menu.
   O nome e um botão grande. "Saxofonista em São Paulo" só para leitor de tela e busca.
 - **Solo:** o disco no herói (`home/SoloDisc.tsx`) toca `public/audio/solo-bigband.m4a`, recortado de
   `public/video/solo-bigband.mp4`.

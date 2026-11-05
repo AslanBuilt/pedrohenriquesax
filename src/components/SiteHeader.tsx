@@ -31,6 +31,8 @@ export function SiteHeader({ cartCount = 0, loggedIn = false, whatsapp = "", ema
   const links = LINKS.filter((l) =>
     (l.href !== "/loja" || hasProducts) && (l.href !== "/agenda" || hasShows));
   const pathname = usePathname();
+  /* Sem produto não há o que comprar nem o que baixar: conta não serve para nada. */
+  const mostrarConta = hasProducts || loggedIn;
   const [open, setOpen] = useState(false);
   const [sobreHeroi, setSobreHeroi] = useState(pathname === "/");
 
@@ -79,9 +81,9 @@ export function SiteHeader({ cartCount = 0, loggedIn = false, whatsapp = "", ema
 
           <div className="flex items-center gap-1">
             <HireButton tipo={tipoDaPagina} className={`btn btn-primary mr-1 hidden transition-opacity duration-300 lg:inline-flex ${transparente ? "invisible opacity-0" : "opacity-100"}`} />
-            <Link href="/conta" aria-label={loggedIn ? "Minha conta" : "Entrar"} title={loggedIn ? "Minha conta" : "Entrar"} className="btn btn-ghost hidden px-2 sm:inline-flex sm:px-3">
+            {mostrarConta && <Link href="/conta" aria-label={loggedIn ? "Minha conta" : "Entrar"} title={loggedIn ? "Minha conta" : "Entrar"} className="btn btn-ghost hidden px-2 sm:inline-flex sm:px-3">
               <UserCircle size={22} weight="regular" aria-hidden />
-            </Link>
+            </Link>}
             {hasProducts && <Link href="/carrinho" aria-label={`Carrinho, ${cartCount} ${cartCount === 1 ? "item" : "itens"}`} title="Carrinho" className="btn btn-ghost relative px-2 sm:px-3 gap-1.5">
               <ShoppingBagOpen size={22} weight="regular" aria-hidden />
               {cartCount > 0 && (
@@ -118,6 +120,7 @@ export function SiteHeader({ cartCount = 0, loggedIn = false, whatsapp = "", ema
                 {l.label}
               </Link>
             ))}
+            {mostrarConta && (
             <Link
               href="/conta"
               onClick={() => setOpen(false)}
@@ -126,6 +129,7 @@ export function SiteHeader({ cartCount = 0, loggedIn = false, whatsapp = "", ema
             >
               {loggedIn ? "Minha conta" : "Entrar"}
             </Link>
+            )}
           </nav>
         </div>
       )}

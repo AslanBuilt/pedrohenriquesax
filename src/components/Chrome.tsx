@@ -25,7 +25,7 @@ export async function Chrome({ children }: { children: React.ReactNode }) {
         hasShows={showsFuturos > 0}
       />
       <main id="conteudo" className="pt-[68px] min-h-[60vh]">{children}</main>
-      <SiteFooter settings={settings} />
+      <SiteFooter settings={settings} mostrarConta={produtosAtivos > 0 || !!customer} />
     </>
   );
 }

@@ -54,7 +54,7 @@ export default async function Home() {
     "@context": "https://schema.org", "@type": "Person",
     name: settings.name, jobTitle: "Saxofonista",
     description: settings.bioMedium || settings.bioShort, url: site,
-    image: `${site}/fotos/hero.jpg`,
+    image: `${site}/fotos/hero-v2.jpg`,
     ...(settings.whatsapp && { telephone: settings.whatsapp }),
     ...(settings.email && { email: settings.email }),
     address: { "@type": "PostalAddress", addressLocality: settings.city, addressCountry: "BR" },
@@ -103,7 +103,7 @@ export default async function Home() {
         <Agenda shows={shows} className="bg-raised" />
 
       </main>
-      <SiteFooter settings={settings} />
+      <SiteFooter settings={settings} mostrarConta={produtosAtivos > 0 || !!customer} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {videoLd.length > 0 && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(videoLd) }} />

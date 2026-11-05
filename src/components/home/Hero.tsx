@@ -14,7 +14,7 @@ export function Hero({ settings: s }: { settings: Settings }) {
     <section id="heroi" className="on-dark relative isolate flex min-h-[calc(100dvh-76px)] flex-col justify-end overflow-hidden bg-night lg:min-h-[max(640px,100dvh)]">
       <div className="hero-foto absolute -z-10 max-lg:inset-0">
         <Image
-          src="/fotos/hero.jpg"
+          src="/fotos/hero-v2.jpg"
           alt={`${s.name} com o saxofone tenor`}
           fill
           priority

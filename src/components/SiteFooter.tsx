@@ -22,7 +22,7 @@ const arroba = (url: string) => `@${url.replace(/\/+$/, "").split("/").pop()?.re
  * o do cabeçalho está sempre à vista. Os contatos são uma lista só, com ícones de traço fino: todos no mesmo
  * peso, sem misturar glifo cheio com traço.
  */
-export function SiteFooter({ settings: s }: { settings: Settings }) {
+export function SiteFooter({ settings: s, mostrarConta = false }: { settings: Settings; mostrarConta?: boolean }) {
   const wa = s.whatsapp.replace(/\D/g, "");
   const contatos = ([
     [WhatsappLogo, s.whatsapp, wa && `https://wa.me/${wa}?text=${encodeURIComponent("Olá, Pedro! Vim pelo site.")}`],
@@ -52,7 +52,7 @@ export function SiteFooter({ settings: s }: { settings: Settings }) {
             {SITE.map(([href, label]) => <li key={href}><Link href={href} className={LINK}>{label}</Link></li>)}
           </ul>
           <ul className="flex flex-col items-start">
-            {CONTA.map(([href, label]) => <li key={href}><Link href={href} className={LINK}>{label}</Link></li>)}
+            {CONTA.filter(([href]) => href !== "/conta" || mostrarConta).map(([href, label]) => <li key={href}><Link href={href} className={LINK}>{label}</Link></li>)}
           </ul>
 
           <div className="relative hidden h-36 w-36 text-brass lg:block">

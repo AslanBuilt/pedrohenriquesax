@@ -39,7 +39,8 @@ const m=await b.newContext({viewport:{width:390,height:844}}); const mp=await m.
 await mp.goto(B,{waitUntil:'networkidle'});
 t('sem overflow', await mp.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth+1));
 await mp.getByRole("button",{name:/Abrir menu/i}).click(); await mp.waitForTimeout(400);
-t('gaveta com as seções e a conta', await mp.locator('#menu-mobile a[href="/conta"]').count()===1 && await mp.locator('#menu-mobile a').count()>=4);
+t('sem produto, sem link de conta', await mp.locator('#menu-mobile a[href="/conta"]').count()===0 && await mp.locator('header a[href="/conta"]').count()===0 && await mp.locator('footer a[href="/conta"]').count()===0);
+t('gaveta com as seções', await mp.locator('#menu-mobile a').count()>=3);
 t('barra de contratar fixa', await mp.locator('.barra-contratar a').isVisible());
 t('alvos de toque >= 44px', await mp.evaluate(()=>[...document.querySelectorAll('.btn')].filter(x=>x.offsetParent).every(x=>x.getBoundingClientRect().height>=38)));
 await m.close();
