@@ -86,7 +86,7 @@ Referências do Pedro em 05/11/2026: ameliasaz.com (simplicidade, grade de fotos
 - Tipografia: **DM Serif Display** nos títulos, **Hanken Grotesk** no corpo. Sem letra cursiva:
   testada no nome e rejeitada em 05/11/2026. Bodoni também: difícil de ler sobre o preto.
 - **Herói:** `hero-v3.jpg`, retrato de perto com o sax (DSC08365 do ensaio), com o fundo cinza original caindo para o preto em volta dele. Pedido do Pedro em 05/11/2026, que achou a capa anterior simples demais e mandou uma referência.
-  No computador fica à direita, com a frase à esquerda; no celular, em tela cheia. "A música chega primeiro." vem da referência dele. O nome aparece no cabeçalho, e "saxofonista em São Paulo" só para leitor de tela e busca.
+  No computador fica à direita, com o nome à esquerda (sobrenome em ouro itálico); no celular, em tela cheia. O cabeçalho esconde o nome sobre o herói, para não repetir. "Saxofonista em São Paulo" só para leitor de tela e busca.
 - **Solo:** o disco no herói (`home/SoloDisc.tsx`) toca `public/audio/solo-bigband.m4a`, recortado de
   `public/video/solo-bigband.mp4`.
 - **Seções:** fundos alternados entre preto e claro, nunca dois iguais em seguida, e nada de

@@ -4,12 +4,15 @@ import { HireButton } from "@/components/HireButton";
 import { SoloDisc } from "@/components/home/SoloDisc";
 
 /**
- * O retrato dele de perto, a frase, o botão e o disco que toca o solo. O nome já está no menu e fica no
- * h1 para leitores de tela e buscadores, junto com "saxofonista em São Paulo".
+ * O retrato dele de perto, o nome, o botão e o disco que toca o solo. O sax já diz o que ele faz:
+ * "saxofonista em São Paulo" fica só para leitores de tela e buscadores.
  *
  * Fixa no código porque o texto branco depende do fundo preto dela.
  */
 export function Hero({ settings: s }: { settings: Settings }) {
+  const [nome, ...resto] = s.name.split(" ");
+  const sobrenome = resto.join(" ");
+
   return (
     <section id="heroi" className="on-dark relative isolate flex min-h-[calc(100dvh-76px)] flex-col justify-end overflow-hidden bg-night lg:min-h-[max(640px,100dvh)]">
       <div className="hero-foto absolute -z-10 max-lg:inset-0">
@@ -26,9 +29,9 @@ export function Hero({ settings: s }: { settings: Settings }) {
 
       <div className="wrap pb-8 lg:pb-14">
         <h1 className="sobe d-hero text-white">
-          <span className="sr-only">{s.name}, {s.tagline.toLowerCase()} em {s.city}. </span>
-          <span className="block">A música</span>
-          <span className="block italic text-brass">chega primeiro.</span>
+          <span className="block">{nome}</span>
+          <span className="block italic text-brass">{sobrenome}</span>
+          <span className="sr-only">, {s.tagline.toLowerCase()} em {s.city}</span>
         </h1>
         <span className="sobe mt-8 flex items-center gap-5 lg:mt-10" style={{ animationDelay: "220ms" }}>
           <HireButton className="btn btn-primary btn-xl hidden lg:inline-flex" />
