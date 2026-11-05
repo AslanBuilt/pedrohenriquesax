@@ -34,7 +34,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
     <div className="min-h-[100dvh] lg:grid lg:grid-cols-[248px_1fr]">
       <aside className="border-b border-black/10 lg:border-b-0 lg:border-r lg:min-h-[100dvh]">
         <div className="p-6">
-          <Link href="/" className="d-nar text-paper" style={{ fontVariationSettings: '"wdth" 112,"wght" 700', fontSize: ".9rem" }}>
+          <Link href="/" className="d-nar text-paper" style={{ fontWeight: 700, fontSize: ".9rem" }}>
             Pedro Lucena
           </Link>
           <p className="mono text-[0.65rem] text-faint mt-1">painel</p>

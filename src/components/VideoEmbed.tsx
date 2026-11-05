@@ -43,7 +43,7 @@ export function VideoEmbed({
   if (!id) {
     return (
       <div
-        className={`relative w-full overflow-hidden bg-surface ${className}`}
+        className={`relative w-full overflow-hidden bg-night ${className}`}
         style={aspect ? { aspectRatio: aspect.replace("/", " / ") } : undefined}
       >
         <video
@@ -104,7 +104,7 @@ export function VideoEmbed({
             <PlayCircle
               size={68}
               weight="fill"
-              className="text-white/90 drop-shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:text-[#89CFF0]"
+              className="text-white/90 drop-shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:text-brass"
             />
           </span>
         </button>

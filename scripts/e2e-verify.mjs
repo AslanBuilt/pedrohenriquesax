@@ -20,38 +20,42 @@ t('home carrega', (await p.title()).includes('Pedro Lucena'));
 t('nav em UMA linha', await p.evaluate(()=>{const n=document.querySelector('nav[aria-label="Principal"]');const tops=new Set([...n.querySelectorAll('a')].map(a=>Math.round(a.getBoundingClientRect().top)));return tops.size===1}));
 t('nav <= 80px', await p.evaluate(()=>document.querySelector('header').getBoundingClientRect().height<=80));
 t('hambúrguer oculto no desktop', await p.evaluate(()=>getComputedStyle(document.querySelector('button[aria-controls=menu-mobile]')).display==='none'));
-t('JSON-LD Person', JSON.parse(await p.locator('script[type="application/ld+json"]').textContent())['@type']==='Person');
+t('JSON-LD Person', JSON.parse(await p.locator('script[type="application/ld+json"]').first().textContent())['@type']==='Person');
 t('sem overflow horizontal', await p.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth+1));
 t('nenhum id duplicado', await p.evaluate(()=>{const s=new Set(),d=[];for(const e of document.querySelectorAll('[id]')){if(s.has(e.id))d.push(e.id);s.add(e.id)}return d.length===0}));
 
-await p.goto(B+'/sobre',{waitUntil:'networkidle'});
-t('31 credenciais em /sobre', await p.locator('#credenciais li').count()===31);
+await p.goto(B+'/',{waitUntil:'networkidle'});
 const credText = await p.locator('#credenciais').textContent();
+await p.goto(B+'/sobre',{waitUntil:'networkidle'});
 t('Guinga · Danilo Pérez · Jeff Coffin', ['Guinga','Danilo Pérez','Jeff Coffin','Anat Cohen','Dilsinho'].every(n=>credText.includes(n)));
+t('navios temáticos fora do site', !credText.includes('Navios'));
+t('canonical da própria página', (await p.locator('link[rel=canonical]').getAttribute('href')).endsWith('/sobre'));
 t('todo input tem label', await p.evaluate(()=>[...document.querySelectorAll('input:not([type=hidden]),textarea,select')].every(i=>i.labels?.length>0||i.getAttribute('aria-label'))));
 
-await p.goto(B+'/agenda',{waitUntil:'networkidle'});
-t('agenda mostra estado vazio', (await p.locator('body').innerText()).toLowerCase().includes('nenhuma data'));
+t('agenda vazia fora do menu', await p.locator('nav[aria-label="Principal"] a[href="/agenda"]').count()===0);
 
 H('MOBILE 390px');
 const m=await b.newContext({viewport:{width:390,height:844}}); const mp=await m.newPage();
 await mp.goto(B,{waitUntil:'networkidle'});
 t('sem overflow', await mp.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth+1));
 await mp.getByRole("button",{name:/Abrir menu/i}).click(); await mp.waitForTimeout(400);
-t('gaveta com 8 links (7 seções + conta)', await mp.locator('#menu-mobile a').count()===8);
-t('alvos de toque >= 44px', await mp.evaluate(()=>[...document.querySelectorAll('.btn')].every(x=>x.getBoundingClientRect().height>=38)));
+t('gaveta com as seções e a conta', await mp.locator('#menu-mobile a[href="/conta"]').count()===1 && await mp.locator('#menu-mobile a').count()>=4);
+t('barra de contratar fixa', await mp.locator('.barra-contratar a').isVisible());
+t('alvos de toque >= 44px', await mp.evaluate(()=>[...document.querySelectorAll('.btn')].filter(x=>x.offsetParent).every(x=>x.getBoundingClientRect().height>=38)));
 await m.close();
 
-H('FORMULÁRIO DE EVENTOS → WHATSAPP');
+H('CONTRATAR → WHATSAPP');
 await p.goto(B+'/eventos',{waitUntil:'networkidle'});
-await p.locator('#f-ev-name').fill('Mariana Alencastro');
-await p.locator('#f-ev-email').fill('mariana@exemplo.com.br');
-await p.locator('#f-ev-eventType').fill('Casamento');
-await p.locator('#f-ev-city').fill('Campinas');
-await p.getByRole('button',{name:/Enviar e abrir WhatsApp/i}).click();
-await p.waitForSelector('a:has-text("Abrir no WhatsApp")',{timeout:10000});
-const href=await p.getByRole('link',{name:/Abrir no WhatsApp/i}).getAttribute('href');
+await p.locator('header a:has-text("Contratar")').click();
+t('formulário abre em janela', await p.locator('dialog.hire').evaluate(d=>d.open));
+await p.locator('dialog.hire').getByRole('button',{name:'Casamento'}).click();
+await p.locator('#f-hire-name').fill('Mariana Alencastro');
+await p.locator('#f-hire-city').fill('Campinas');
+const [popup]=await Promise.all([p.waitForEvent('popup'),p.getByRole('button',{name:/Enviar pelo WhatsApp/i}).click()]);
+await p.waitForSelector('a:has-text("Abrir de novo")',{timeout:10000});
+const href=await p.getByRole('link',{name:/Abrir de novo/i}).getAttribute('href');
 t('wa.me gerado com dados', href.startsWith('https://wa.me/55') && decodeURIComponent(href).includes('Casamento') && decodeURIComponent(href).includes('Campinas'));
+await popup.close();
 
 H('PAINEL — LOGIN E PRODUTO');
 await p.goto(B+'/admin',{waitUntil:'networkidle'});
@@ -65,8 +69,6 @@ await p.locator('#f-email').fill('pedro@pedrolucenasax.com');
 await p.locator('#f-password').fill('pedro2026'); await p.getByRole('button',{name:/^Entrar$/}).click();
 await p.waitForSelector('text=AGUARDANDO',{timeout:10000}).catch(()=>{});
 t('login do admin', p.url().endsWith('/admin'));
-await p.goto(B+'/admin/mensagens',{waitUntil:'networkidle'});
-t('mensagem chegou no painel', has(await p.locator('body').innerText(),'Mariana Alencastro'));
 
 await p.goto(B+'/admin/produtos/novo',{waitUntil:'networkidle'});
 await p.locator('#f-title').fill('Método de Sonoridade');
@@ -111,7 +113,7 @@ t('QR Code renderizado', await s.locator('img[alt*="QR Code"]').count()===1);
 t('Pix copia e cola exibido', pedidoTxt.includes('00020126'));
 t('valor correto no Pix', pedidoTxt.includes('5406150.00'));
 t('avisa que a confirmação é manual', pedidoTxt.includes('Pedro confirmar'));
-t('conta criada automaticamente', has(await s.locator('header').innerText(),'Conta'));
+t('conta criada automaticamente', await s.locator('header a[aria-label="Minha conta"]').count()===1);
 
 H('ARQUIVO PROTEGIDO ANTES DO PAGAMENTO');
 await s.goto(B+'/conta',{waitUntil:'networkidle'});

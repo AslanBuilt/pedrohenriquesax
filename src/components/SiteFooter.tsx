@@ -1,99 +1,69 @@
 import Link from "next/link";
 import {
-  InstagramLogo, TiktokLogo, YoutubeLogo, SpotifyLogo, LinkedinLogo,
-  WhatsappLogo, EnvelopeSimple,
+  EnvelopeSimple, InstagramLogo, LinkedinLogo, SpotifyLogo, TiktokLogo, WhatsappLogo, YoutubeLogo,
 } from "@phosphor-icons/react/dist/ssr";
 import type { Settings } from "@/lib/settings";
+import { Seal } from "@/components/Seal";
+
+const SITE: [string, string][] = [
+  ["/sobre", "Sobre"], ["/eventos", "Eventos"], ["/mentoria", "Mentoria"], ["/videos", "Vídeos"],
+];
+const CONTA: [string, string][] = [
+  ["/conta", "Minha conta"], ["/privacidade", "Privacidade"], ["/termos", "Termos"],
+];
+
+const LINK = "inline-flex min-h-[40px] items-center text-white/85 transition-colors hover:text-brass";
+
+/** "instagram.com/pedrolucenasax" vira "@pedrolucenasax". */
+const arroba = (url: string) => `@${url.replace(/\/+$/, "").split("/").pop()?.replace(/^@/, "")}`;
 
 /**
- * Rodapé.
- *
- * Sem botão de contratar: já existe no cabeçalho e no herói, e um terceiro só
- * dividia a atenção. As redes viram ícone puro — "Instagram" escrito por
- * extenso não diz nada que o ícone não diga. Telefone e e-mail ganham ícone
- * mas mantêm o texto, porque ali o dado *é* o conteúdo: a pessoa quer ler,
- * copiar e discar.
+ * Toda página termina no preto, como a primeira começa. Sem botão de contratar:
+ * o do cabeçalho está sempre à vista. Os contatos são uma lista só, com ícones de traço fino: todos no mesmo
+ * peso, sem misturar glifo cheio com traço.
  */
-const REDES = (s: Settings) =>
-  ([
-    ["Instagram", s.instagramUrl, InstagramLogo],
-    ["TikTok", s.tiktokUrl, TiktokLogo],
-    ["YouTube", s.youtubeUrl, YoutubeLogo],
-    ["Spotify", s.spotifyUrl, SpotifyLogo],
-    ["LinkedIn", s.linkedinUrl, LinkedinLogo],
-  ] as const).filter(([, url]) => !!url);
-
 export function SiteFooter({ settings: s }: { settings: Settings }) {
-  const redes = REDES(s);
   const wa = s.whatsapp.replace(/\D/g, "");
+  const contatos = ([
+    [WhatsappLogo, s.whatsapp, wa && `https://wa.me/${wa}?text=${encodeURIComponent("Olá, Pedro! Vim pelo site.")}`],
+    [EnvelopeSimple, s.email, s.email && `mailto:${s.email}`],
+    [InstagramLogo, s.instagramUrl && arroba(s.instagramUrl), s.instagramUrl],
+    [TiktokLogo, s.tiktokUrl && arroba(s.tiktokUrl), s.tiktokUrl],
+    [YoutubeLogo, s.youtubeUrl && "YouTube", s.youtubeUrl],
+    [SpotifyLogo, s.spotifyUrl && "Spotify", s.spotifyUrl],
+    [LinkedinLogo, s.linkedinUrl && "LinkedIn", s.linkedinUrl],
+  ] as const).filter(([, texto, href]) => texto && href);
 
   return (
-    <footer className="chrome-bottom border-t border-black/10">
-      <div className="wrap py-10 md:py-12">
-        <div className="grid gap-8 md:grid-cols-[1.5fr_1fr] md:gap-12">
-          <div>
-            <p className="d-m text-paper">{s.name}</p>
-            <p className="mt-2 text-sm text-muted">
-              {s.tagline}{s.city ? ` · ${s.city}` : ""}
-            </p>
-          </div>
-
-          <div className="flex flex-col gap-3">
-            {s.whatsapp && (
-              <a
-                href={`https://wa.me/${wa}?text=${encodeURIComponent("Olá, Pedro! Vim pelo site.")}`}
-                target="_blank" rel="noopener noreferrer"
-                className="inline-flex min-h-[44px] items-center gap-3 text-muted transition-colors hover:text-paper"
-              >
-                <WhatsappLogo size={19} weight="regular" aria-hidden className="shrink-0 text-faint" />
-                <span>{s.whatsapp}</span>
-              </a>
-            )}
-            {s.email && (
-              <a
-                href={`mailto:${s.email}`}
-                className="inline-flex min-h-[44px] items-center gap-3 break-all text-muted transition-colors hover:text-paper"
-              >
-                <EnvelopeSimple size={19} weight="regular" aria-hidden className="shrink-0 text-faint" />
-                <span>{s.email}</span>
-              </a>
-            )}
-
-            {redes.length > 0 && (
-              <div className="mt-1 flex flex-wrap items-center gap-1">
-                {redes.map(([label, url, Icon]) => (
-                  <a
-                    key={label}
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    title={label}
-                    className="inline-flex h-11 w-11 items-center justify-center text-muted transition-colors hover:text-accent"
-                  >
-                    <Icon size={22} weight="fill" aria-hidden />
-                  </a>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-
-        <div className="mt-9 flex flex-col gap-3 border-t border-black/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="mono text-xs text-faint">© {new Date().getFullYear()} {s.name}</p>
-          <div className="flex flex-wrap gap-x-6">
-            {[["/sobre", "Sobre"], ["/contato", "Contato"], ["/conta", "Minha conta"],
-              ["/privacidade", "Privacidade"], ["/termos", "Termos"]].map(([href, label]) => (
-              <Link
-                key={href}
-                href={href}
-                className="label inline-flex min-h-[44px] items-center text-faint transition-colors hover:text-muted"
-              >
-                {label}
-              </Link>
+    <footer className="on-dark bg-night text-white">
+      <div className="wrap py-14 md:py-20">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-[1.6fr_0.8fr_0.8fr_auto]">
+          <ul className="col-span-2 flex flex-col items-start lg:col-span-1">
+            {contatos.map(([Icon, texto, href]) => (
+              <li key={href}>
+                <a href={href} target={href.startsWith("mailto") ? undefined : "_blank"} rel="noopener noreferrer" className={`${LINK} gap-3`}>
+                  <Icon size={21} weight="light" aria-hidden className="shrink-0 text-brass" />
+                  <span className="break-all">{texto}</span>
+                </a>
+              </li>
             ))}
+          </ul>
+          <ul className="flex flex-col items-start">
+            {SITE.map(([href, label]) => <li key={href}><Link href={href} className={LINK}>{label}</Link></li>)}
+          </ul>
+          <ul className="flex flex-col items-start">
+            {CONTA.map(([href, label]) => <li key={href}><Link href={href} className={LINK}>{label}</Link></li>)}
+          </ul>
+
+          <div className="relative hidden h-36 w-36 text-brass lg:block">
+            <Seal className="h-full w-full" />
+            <span className="d-s absolute inset-0 flex flex-col items-center justify-center text-center !leading-[1.1] text-white">
+              {s.name.split(" ").map((w) => <span key={w} className="block">{w}</span>)}
+            </span>
           </div>
         </div>
+
+        <p className="mono mt-10 text-sm text-white/70">© {new Date().getFullYear()} {s.name}</p>
       </div>
     </footer>
   );

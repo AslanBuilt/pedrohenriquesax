@@ -1,6 +1,6 @@
 import { Chrome } from "@/components/Chrome";
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Termos de compra" };
+export const metadata = { title: "Termos de compra", alternates: { canonical: "/termos" } };
 export default function T() {
   return (
     <Chrome><div className="wrap-narrow section">

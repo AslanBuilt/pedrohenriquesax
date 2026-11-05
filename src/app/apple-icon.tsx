@@ -11,11 +11,11 @@ export default function AppleIcon() {
       <div
         style={{
           width: "100%", height: "100%", display: "flex", flexDirection: "column",
-          alignItems: "center", justifyContent: "center", background: "#89CFF0",
+          alignItems: "center", justifyContent: "center", background: "#070506",
         }}
       >
-        <div style={{ display: "flex", fontSize: 96, fontWeight: 800, color: "#0E2430", letterSpacing: -5 }}>PL</div>
-        <div style={{ display: "flex", marginTop: 14, width: 52, height: 4, background: "#0E2430" }} />
+        <div style={{ display: "flex", fontSize: 96, fontWeight: 800, color: "#D2AE5C", letterSpacing: -5 }}>PL</div>
+        <div style={{ display: "flex", marginTop: 14, width: 52, height: 4, background: "#D2AE5C" }} />
       </div>
     ),
     { ...size },

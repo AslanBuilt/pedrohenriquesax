@@ -7,6 +7,19 @@ const nextConfig: NextConfig = {
        Pedro troca o ensaio, não a cada request. */
     minimumCacheTTL: 2592000,
   },
+  async redirects() {
+    return [
+      /* A página de contato virou o formulário "Contratar", que abre em qualquer página. */
+      { source: "/contato", destination: "/#contratar", permanent: true },
+      /* Um endereço só, para o Google não dividir o site em dois. */
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.pedrolucenasax.com" }],
+        destination: "https://pedrolucenasax.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

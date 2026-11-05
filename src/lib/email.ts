@@ -40,9 +40,9 @@ ${body}
 
 const P = (t: string) => `<p style="margin:0 0 13px;font-size:15px;line-height:1.6;color:#C0CACE">${t}</p>`;
 const BTN = (href: string, label: string) =>
-  `<p style="margin:22px 0 4px"><a href="${href}" style="display:inline-block;background:#89CFF0;color:#0E2430;text-decoration:none;padding:13px 22px;border-radius:2px;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase">${label}</a></p>`;
+  `<p style="margin:22px 0 4px"><a href="${href}" style="display:inline-block;background:#15120E;color:#FFFFFF;text-decoration:none;padding:13px 22px;border-radius:2px;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase">${label}</a></p>`;
 const CODE = (t: string) =>
-  `<p style="margin:14px 0;padding:13px;background:#FFFFFF;border:1px solid rgba(19,26,30,.18);border-radius:2px;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#1B6E8C;word-break:break-all;line-height:1.55">${t}</p>`;
+  `<p style="margin:14px 0;padding:13px;background:#FFFFFF;border:1px solid rgba(19,26,30,.18);border-radius:2px;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#7A5816;word-break:break-all;line-height:1.55">${t}</p>`;
 
 export const tpl = {
   orderCreated: (o: { number: string; total: string; pix: string; url: string }) => ({
@@ -69,10 +69,5 @@ export const tpl = {
     subject: `Novo pedido ${o.number} — ${o.total}`,
     html: SHELL("Novo pedido", P(`<strong style="color:#F2F4F5">${o.customer}</strong> fez um pedido de <strong style="color:#F2F4F5">${o.total}</strong>.`) + P("Confirme assim que o Pix cair no seu extrato.") + BTN(o.url, "Abrir pedido")),
     text: `Novo pedido ${o.number} de ${o.customer} — ${o.total}. ${o.url}`,
-  }),
-  adminNewMessage: (m: { kind: string; name: string; body: string; url: string }) => ({
-    subject: `Nova mensagem (${m.kind}) — ${m.name}`,
-    html: SHELL("Nova mensagem", P(`De <strong style="color:#F2F4F5">${m.name}</strong>, pelo formulário de ${m.kind}.`) + CODE(m.body) + BTN(m.url, "Ver no painel")),
-    text: `Mensagem de ${m.name} (${m.kind}):\n${m.body}\n${m.url}`,
   }),
 };

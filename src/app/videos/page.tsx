@@ -1,11 +1,12 @@
+import { Fragment } from "react";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { Chrome } from "@/components/Chrome";
-import { PageHeader } from "@/components/PageHeader";
+import { HireButton } from "@/components/HireButton";
+import { PhotoBand } from "@/components/PhotoBand";
 import { VideoSection } from "@/components/VideoSection";
 import { Empty } from "@/components/Alert";
 import { videosJsonLd } from "@/lib/youtube";
-import Link from "next/link";
 import { Spotify } from "@/components/Spotify";
 
 /**
@@ -19,6 +20,7 @@ import { Spotify } from "@/components/Spotify";
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Vídeos",
+  alternates: { canonical: "/videos" },
   description: "Gravações de Pedro Lucena em evento, em estúdio e com big band.",
 };
 
@@ -40,39 +42,31 @@ export default async function Videos() {
 
   return (
     <Chrome>
-      <PageHeader kicker="Acervo" title="Vídeos" />
+      <PhotoBand src="/fotos/g13.jpg" alt="Pedro Lucena atrás do saxofone" pos="50% 30%">
+        <h1 className="d-l max-w-[14em] text-white">Palco e estúdio</h1>
+      </PhotoBand>
 
       {items.length ? (
         GRUPOS.map((g, i) => {
           const doGrupo = items.filter((m) => m.context === g.key);
           if (!doGrupo.length) return null;
           return (
-            <VideoSection
-              key={g.key}
-              items={doGrupo}
-              id={g.key}
-              kicker={`${doGrupo.length} ${doGrupo.length === 1 ? "vídeo" : "vídeos"}`}
-              title={g.title}
-              sub
-              className={i === 0 ? "pt-6" : ""}
-            />
+            <Fragment key={g.key}>
+              <VideoSection items={doGrupo} id={g.key} title={g.title} sub />
+              {/* A playlist separa os dois grupos: fundo igual em seguida, não. */}
+              {i === 0 && <Spotify playlistId="2DoalDFTdg45JYx1t4V9eP" />}
+            </Fragment>
           );
         })
       ) : (
         <div className="wrap section section-first">
           <Empty
             title="Ainda não há vídeos publicados."
-            action={<Link href="/contato" className="btn btn-primary">Falar comigo</Link>}
+            action={<HireButton>Falar comigo</HireButton>}
           />
         </div>
       )}
 
-      {/* A playlist entra depois dos vídeos: som gravado é outro tipo de prova,
-          e é a única que o site tinha como mostrar de trabalho de estúdio. */}
-      <Spotify
-        playlistId="2DoalDFTdg45JYx1t4V9eP"
-        body="Faixas que gravei com outros artistas, reunidas pelo próprio Pedro."
-      />
 
       {ld.length > 0 && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />

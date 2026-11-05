@@ -1,6 +1,6 @@
 import { Chrome } from "@/components/Chrome";
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Política de privacidade" };
+export const metadata = { title: "Política de privacidade", alternates: { canonical: "/privacidade" } };
 export default function P() {
   return (
     <Chrome><div className="wrap-narrow section">

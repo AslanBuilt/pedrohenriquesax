@@ -17,10 +17,8 @@ export const alt = "Pedro Lucena — saxofonista em São Paulo";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const INK = "#F7F8FA";
-const PAPER = "#131A1E";
-const ACCENT = "#1B6E8C";
-const FILL = "#89CFF0";
+const NIGHT = "#070506";
+const BRASS = "#D2AE5C";
 
 export default async function OpengraphImage() {
   let photo = "";
@@ -36,20 +34,20 @@ export default async function OpengraphImage() {
 
   return new ImageResponse(
     (
-      <div style={{ width: "100%", height: "100%", display: "flex", background: INK, position: "relative" }}>
+      <div style={{ width: "100%", height: "100%", display: "flex", background: NIGHT, position: "relative" }}>
         {photo ? (
           <img
             src={photo}
-            width={size.width}
+            width={size.width * 0.6}
             height={size.height}
-            style={{ position: "absolute", top: 0, left: 0, width: size.width, height: size.height, objectFit: "cover", objectPosition: "72% 18%" }}
+            style={{ position: "absolute", top: 0, right: 0, width: size.width * 0.6, height: size.height, objectFit: "cover", objectPosition: "50% 14%" }}
           />
         ) : null}
 
         <div
           style={{
             position: "absolute", top: 0, left: 0, width: size.width, height: size.height,
-            background: `linear-gradient(100deg, ${INK} 10%, rgba(247,248,250,0.9) 46%, rgba(247,248,250,0.25) 84%, rgba(247,248,250,0) 100%)`,
+            background: `linear-gradient(90deg, ${NIGHT} 42%, rgba(7,5,6,0.75) 56%, rgba(7,5,6,0) 74%)`,
           }}
         />
 
@@ -59,24 +57,24 @@ export default async function OpengraphImage() {
             width: 780, height: "100%", padding: "0 76px",
           }}
         >
-          <div style={{ display: "flex", color: ACCENT, fontSize: 21, letterSpacing: 4, textTransform: "uppercase" }}>
-            Saxofonista · São Paulo
+          <div style={{ display: "flex", color: BRASS, fontSize: 30 }}>
+            Saxofonista em São Paulo
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", marginTop: 20 }}>
-            <div style={{ display: "flex", fontSize: 108, fontWeight: 800, color: PAPER, lineHeight: 1, letterSpacing: -3, textTransform: "uppercase" }}>
+            <div style={{ display: "flex", fontSize: 108, fontWeight: 800, color: "#FFFFFF", lineHeight: 1, letterSpacing: -3 }}>
               Pedro
             </div>
-            <div style={{ display: "flex", fontSize: 108, fontWeight: 800, color: PAPER, lineHeight: 1, letterSpacing: -3, textTransform: "uppercase" }}>
+            <div style={{ display: "flex", fontSize: 108, fontWeight: 800, color: "#FFFFFF", lineHeight: 1, letterSpacing: -3 }}>
               Lucena
             </div>
           </div>
 
-          <div style={{ display: "flex", marginTop: 30, fontSize: 27, color: "#4A555C", lineHeight: 1.35 }}>
+          <div style={{ display: "flex", marginTop: 30, fontSize: 27, color: "rgba(255,255,255,0.8)", lineHeight: 1.35 }}>
             Souza Lima &amp; Berklee · big bands, jazz e eventos
           </div>
 
-          <div style={{ display: "flex", marginTop: 26, width: 64, height: 4, background: FILL }} />
+          <div style={{ display: "flex", marginTop: 26, width: 64, height: 4, background: BRASS }} />
         </div>
       </div>
     ),

@@ -1,45 +1,51 @@
-import Image from "next/image";
 import type { Settings } from "@/lib/settings";
-import { Reveal } from "@/components/Reveal";
+import { Chapter } from "@/components/Chapter";
+import { PhotoQuote } from "@/components/PhotoQuote";
 import { mediaUrl } from "@/lib/media-url";
+import { semViuva } from "@/lib/text";
 
-export function About({ settings: s, level = "h2" }: { level?: "h1" | "h2"; settings: Settings }) {
-  const H = level;
-  const paras = (s.bioLong || s.bioMedium || "").split(/\n\s*\n/).filter(Boolean);
+/* Da formação ao palco de hoje: a foto acompanha o momento da história. */
+const FOTOS: [string, string][] = [
+  ["/fotos/g10.jpg", "50% 15%"],
+  ["/fotos/g02.jpg", "50% 20%"],
+  ["/video/solo-bigband.jpg", "60% 28%"],
+  ["/fotos/g13.jpg", "50% 30%"],
+  ["/fotos/live-sax-palco.jpg", "50% 50%"],
+];
+
+/** A primeira frase vira o título do capítulo; o resto do parágrafo, o texto. */
+function separar(paragrafo: string): [string, string] {
+  const m = paragrafo.match(/^(.+?[.!?])\s+(?=[A-ZÀ-Ú"])(.+)$/s);
+  return m ? [m[1], m[2]] : [paragrafo, ""];
+}
+
+/**
+ * A bio do painel, um capítulo por parágrafo, alternando claro e preto. O rodapé é
+ * preto, então o último capítulo precisa ser claro: com número par de parágrafos, os
+ * dois primeiros viram um capítulo só.
+ */
+export function About({ settings: s }: { settings: Settings }) {
+  const paras = (s.bioLong || s.bioMedium || "").split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
+  if (paras.length % 2 === 0 && paras.length > 1) paras.splice(0, 2, `${paras[0]} ${paras[1]}`);
+
   return (
-    <section id="sobre" className="section border-t border-black/10">
-      <div className="wrap grid gap-12 lg:grid-cols-12 lg:gap-16">
-        <Reveal className="lg:col-span-5">
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2px] group">
-            {s.aboutImageUrl ? (
-              <Image src={mediaUrl(s.aboutImageUrl)} alt={s.name} fill sizes="(max-width:1024px) 100vw, 40vw" className="object-cover zoom-img" />
-            ) : (
-              <div className="h-full w-full bg-gradient-to-br from-[#E3EAEF] to-ink" />
-            )}
-          </div>
-        </Reveal>
+    <>
+      <PhotoQuote src="/fotos/credenciais.jpg" title="Do evento de alto padrão ao estúdio" />
 
-        <div className="lg:col-span-7">
-          <Reveal>
-            <p className="label text-accent">Quem sou eu</p>
-            <H className="d-l text-paper mt-4">Sobre</H>
-          </Reveal>
-          <div className="mt-8 flex flex-col gap-4 prose-w">
-            {paras.map((p, i) => (
-              <Reveal key={i} delay={i * 50}>
-                <p className="text-muted leading-relaxed">{p}</p>
-              </Reveal>
-            ))}
-          </div>
-          {s.resumeUrl && (
-            <Reveal delay={120}>
+      {paras.map((p, i) => {
+        const [titulo, texto] = separar(p);
+        const [foto, pos] = FOTOS[i % FOTOS.length];
+        return (
+          <Chapter key={i} foto={foto} pos={pos} escuro={i % 2 === 1} titulo={titulo}>
+            {texto && <p className="mt-5 text-lg leading-relaxed text-muted">{semViuva(texto, 4)}</p>}
+            {i === paras.length - 1 && s.resumeUrl && (
               <a href={mediaUrl(s.resumeUrl)} target="_blank" rel="noopener noreferrer" className="btn btn-secondary mt-8">
                 Baixar currículo
               </a>
-            </Reveal>
-          )}
-        </div>
-      </div>
-    </section>
+            )}
+          </Chapter>
+        );
+      })}
+    </>
   );
 }

@@ -53,35 +53,45 @@ Acesso local do painel: `pedro@pedrolucenasax.com` / `pedro2026` (trocar em prod
 4. **A confirmação de pagamento é manual e isso é intencional.** Chave Pix estática não
    notifica o site. Toda tela que fala de pagamento precisa dizer isso ao cliente.
 
-5. **Tema travado em claro, com DUAS funções de acento.** Raio 2px em tudo. Tokens no
-   topo de `src/app/globals.css`, com os contrastes medidos.
+5. **Primeira tela preta, resto claro, um acento só.** Raio 2px em tudo, menos botões (pílula). Tokens no topo de
+   `src/app/globals.css`. Decidido na reunião de 05/11/2026; antes era branco com azul-bebê.
 
-   `--color-accent` (`#1B6E8C`, azul escuro) é para **texto**: rótulo, link, destaque.
-   `--color-accent-fill` (`#89CFF0`, azul-bebê) é só para **preenchimento**: fundo de
-   botão, com `--color-on-fill` por cima. Trocar um pelo outro reprova no contraste —
-   azul-bebê como texto sobre branco dá 1.71:1, e como fundo de botão dá 9.32:1.
+   O acento é o ouro do saxofone, em duas funções: `--color-brass` (`#D2AE5C`) sobre o preto e
+   em faixas, `--color-accent` (`#7A5816`) só para texto sobre o claro. Botão primário é tinta
+   sobre o claro e branco sobre o preto (`.on-dark`). Medir com `npm run audit:contrast`.
 
-   Medidos sobre `#F7F8FA`: paper 16.55:1 · muted 7.2:1 · faint 5.23:1 · accent 5.41:1.
-   Foi escuro com acento azul (`#4FA8C4`) e depois latão (`#D9A441`) até 03/09/2026; o
-   Pedro escolheu branco com azul-bebê. A vinheta das capas de vídeo continua **escura**
-   de propósito (`from-black/75`): a capa é uma foto, e o play precisa de contraste
-   contra ela, não contra o fundo da página.
+6. **A navegação é uma linha só**, e abaixo de `lg` vira gaveta. No celular o botão de contratar
+   é a barra fixa no pé da tela, fora das rotas de compra.
 
-6. **A navegação é uma linha só.** Verificada de 320px a 1920px por `npm run verify`.
-   Rótulos de texto só a partir de `xl`; abaixo disso, ícones do Phosphor.
+7. **Nunca eyebrow.** Nada de rótulo pequeno acima de título, nem caixas em volta de texto. O
+   título se sustenta sozinho; credibilidade vem de nomes, foto e som, não de frases.
+
+8. **Pedidos de contratação não passam pelo servidor.** O botão Contratar abre um `<dialog>`
+   (`HireDialog`, montado no `SiteHeader`) e `src/lib/whatsapp.ts` monta a mensagem que abre no
+   WhatsApp do Pedro. `/contato` redireciona para `/#contratar`. `/admin/mensagens` guarda só os
+   pedidos antigos. `npm test` cobre a montagem da mensagem.
+
+9. **Um botão de contratar visível por vez.** No topo da home, o do herói; depois de rolar e nas
+   outras páginas, o do cabeçalho; no celular, a barra fixa. Em `/mentoria` ele abre em aula.
 
 ## Design
 
-Sistema derivado da captura técnica das seis referências indicadas pelo cliente
-(braxtoncook, chadlb, gracekelly, kennyg, mateusasato, alexhahn) — ver
-`docs/specs/2026-09-02-spec-completa.html`.
+Referências do Pedro em 05/11/2026: ameliasaz.com (simplicidade, grade de fotos) e livesax.com.br
+(movimento, faixas claras e escuras).
 
-- Tipografia: **Archivo** variável em três larguras. Expanded 118 no nome, Narrow 78 na
-  parede de credenciais, normal no corpo.
-- A **parede de credenciais** (`src/components/home/Credentials.tsx`) é a assinatura do site:
-  é ela que sustenta o cachê dele. Densidade alta ali é proposital.
-- Imagens em `.storage/public/` são atmosféricas e geradas, sem rosto. **Trocar pelas fotos
-  reais do Pedro assim que ele enviar.**
+- Tipografia: **DM Serif Display** nos títulos, **Hanken Grotesk** no corpo. Sem letra cursiva:
+  testada no nome e rejeitada em 05/11/2026. Bodoni também: difícil de ler sobre o preto.
+- **Herói:** `hero.jpg` a cores em tela cheia, ancorada no topo para a cabeça ficar abaixo do menu.
+  O nome e um botão grande. "Saxofonista em São Paulo" só para leitor de tela e busca.
+- **Solo:** o disco no herói (`home/SoloDisc.tsx`) toca `public/audio/solo-bigband.m4a`, recortado de
+  `public/video/solo-bigband.mp4`.
+- **Seções:** fundos alternados entre preto e claro, nunca dois iguais em seguida, e nada de
+  faixas baixas soltas. O rodapé é preto, então a última seção de cada página é clara.
+- **Ficha técnica e apoios:** só na home, numa seção só, sem repetir em `/sobre`. Mostra os nomes;
+  a observação e o período cadastrados no painel não aparecem.
+- **Apoios** (`src/components/home/Apoios.tsx`): Tokai, Souza Lima e La Musica, em tinta única.
+  Estão no código, não no painel.
+- **Movimento:** scroll-driven em CSS (`animation-timeline`). Sem suporte, fica parado.
 
 ## Conteúdo
 

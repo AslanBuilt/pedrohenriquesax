@@ -1,10 +1,8 @@
-import Image from "next/image";
-import { RequestForm } from "@/components/RequestForm";
-import { mediaUrl } from "@/lib/media-url";
+import { PhotoBand } from "@/components/PhotoBand";
 
 const SEGMENTOS = [
   "Casamentos", "Eventos corporativos", "Recepções",
-  "Réveillon particular", "Bodas", "Show autoral", "Entre outros",
+  "Réveillon particular", "Bodas", "Show autoral",
 ];
 const FORMATOS = [
   "Sax solo",
@@ -13,64 +11,66 @@ const FORMATOS = [
   "Sax & violão",
   "Sax, voz e piano",
   "Sax & quarteto de cordas",
-  "Sax & banda (sax, piano, bateria e baixo)",
+  "Sax & banda",
   "Duo a quinteto de jazz",
 ];
 
-export function Events({ imageUrl, text, level = "h2" }: { level?: "h1" | "h2"; imageUrl: string; text: string }) {
-  const H = level;
+const lista = (itens: string[]) => itens.join(", ").toLowerCase();
 
+/** Perguntas que quem contrata faria a um buscador ou a uma IA. Vai também em FAQPage. */
+export const PERGUNTAS: [string, string][] = [
+  [
+    "Para quais eventos posso contratar um saxofonista em São Paulo?",
+    `Pedro Lucena toca em ${lista(SEGMENTOS)}, entre outros.`,
+  ],
+  [
+    "Quais formatos estão disponíveis?",
+    `${FORMATOS.join(", ")}. O formato é montado conforme o tamanho e o clima do evento.`,
+  ],
+  [
+    "O que é live sax?",
+    "É o saxofone tocando ao vivo por cima da pista, junto com o DJ ou a banda. Funciona muito bem em recepção e festa, porque entra e sai da música sem parar o som.",
+  ],
+  [
+    "Como peço um orçamento?",
+    "Aperte Contratar, preencha o formulário e a mensagem abre pronta no WhatsApp, direto com o Pedro.",
+  ],
+];
+
+export function Events({ text }: { text: string }) {
   return (
-    <section id="eventos" className="section section-first">
-      <div className="wrap">
-        <div className="max-w-3xl">
-          <p className="label text-accent">Contratação</p>
-          <H className="d-l text-paper mt-3">Eventos</H>
-          {text && <p className="mt-5 text-muted prose-w">{text}</p>}
-        </div>
+    <>
+      <PhotoBand src="/fotos/g03.jpg" alt="Pedro Lucena com o saxofone" pos="50% 8%">
+        <h1 className="d-l max-w-[14em] text-white">
+          Casamentos e eventos corporativos
+          <span className="sr-only">: saxofonista em São Paulo</span>
+        </h1>
+      </PhotoBand>
 
-        <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-14">
-          <div className="lg:col-span-5 flex flex-col gap-7">
-            {/* Eram duas listas de linhas com filete embaixo, que ocupavam meia
-                tela para dizer sete palavras. Em cartão, lê-se de relance. */}
-            <div>
-              <p className="label text-faint">Segmentos atendidos</p>
-              <ul className="mt-3 flex flex-wrap gap-2">
-                {SEGMENTOS.map((f) => (
-                  <li key={f} className="card px-3 py-1.5 text-[0.9rem] text-muted">{f}</li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <p className="label text-faint">Formatos</p>
-              <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-                {FORMATOS.map((f) => (
-                  <li key={f} className="card px-3 py-2.5 text-[0.95rem] text-paper">{f}</li>
-                ))}
-              </ul>
-            </div>
-
-            {imageUrl && (
-              <div className="relative aspect-[3/2] overflow-hidden rounded-[2px] group">
-                <Image
-                  src={mediaUrl(imageUrl)}
-                  alt="Pedro Lucena em evento"
-                  fill
-                  sizes="(max-width:1024px) 100vw, 40vw"
-                  className="object-cover zoom-img"
-                />
-              </div>
-            )}
+      {text && (
+        <section id="eventos" className="section">
+          <div className="wrap">
+            <p className="d-l max-w-[24em] text-paper">{text}</p>
           </div>
+        </section>
+      )}
+    </>
+  );
+}
 
-          <div className="lg:col-span-7">
-            <div className="surface rounded-[2px] p-6 md:p-8">
-              <p className="d-m text-paper mb-6">Pedir um orçamento</p>
-              <RequestForm defaultTipo="evento" />
+export function EventsFaq() {
+  return (
+    <section aria-labelledby="perguntas" className="section">
+      <div className="wrap grid gap-8 lg:grid-cols-12 lg:gap-16">
+        <h2 id="perguntas" className="d-l text-paper lg:col-span-5">Perguntas frequentes</h2>
+        <dl className="lg:col-span-7 border-t border-black/15">
+          {PERGUNTAS.map(([q, a]) => (
+            <div key={q} className="border-b border-black/15 py-5">
+              <dt className="d-s text-paper">{q}</dt>
+              <dd className="mt-2 text-muted">{a}</dd>
             </div>
-          </div>
-        </div>
+          ))}
+        </dl>
       </div>
     </section>
   );

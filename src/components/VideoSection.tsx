@@ -30,11 +30,10 @@ function Legenda({ item }: { item: MediaItem }) {
 }
 
 export function VideoSection({
-  items, kicker, title, body, lead = false, level = "h2",
+  items, title, body, lead = false, level = "h2",
   id = "videos", className = "", verMais = false, sub = false,
 }: {
   items: MediaItem[];
-  kicker: string;
   title: string;
   body?: string;
   lead?: boolean;
@@ -55,19 +54,15 @@ export function VideoSection({
   const grid = lead ? rest : playable;
 
   return (
-    <section id={id} className={`${sub ? "section-sm" : "section border-t border-black/10"} ${className}`}>
+    <section id={id} className={`section ${sub ? "" : "border-t border-black/15"} ${className}`}>
       <div className="wrap">
         <Reveal>
           {sub ? (
-            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-black/10 pb-3">
-              <H className="d-s text-paper">{title}</H>
-              <span className="label text-faint">{kicker}</span>
-            </div>
+            <H className="d-l text-paper">{title}</H>
           ) : (
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
-                <p className="label text-accent">{kicker}</p>
-                <H className="d-l text-paper mt-3">{title}</H>
+                <H className="d-l text-paper">{title}</H>
               </div>
               {verMais && (
                 <Link href="/videos" className="btn btn-secondary btn-sm">Ver todos os vídeos</Link>
@@ -91,13 +86,12 @@ export function VideoSection({
         )}
 
         {grid.length > 0 && (
-          <ul className={`grid gap-x-8 gap-y-9 sm:grid-cols-2 lg:grid-cols-3 ${lead ? "mt-12" : sub ? "mt-6" : "mt-8"}`}>
+          <ul className={`grid gap-x-8 gap-y-9 sm:grid-cols-2 ${grid.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"} ${lead ? "mt-12" : sub ? "mt-6" : "mt-8"}`}>
             {grid.map((m, i) => (
               <Reveal as="li" key={m.id} delay={Math.min(i * 60, 360)}>
                 <figure>
                   <VideoEmbed url={m.url} poster={m.poster} title={m.title}
-                    aspect={youtubeId(m.url) ? "" : "630/1120"}
-                    className={youtubeId(m.url) ? "" : "mx-auto max-w-[15rem]"} />
+                    aspect={youtubeId(m.url) ? "" : "16/9"} />
                   <Legenda item={m} />
                 </figure>
               </Reveal>

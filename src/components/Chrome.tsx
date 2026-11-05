@@ -20,6 +20,7 @@ export async function Chrome({ children }: { children: React.ReactNode }) {
         cartCount={count}
         loggedIn={!!customer}
         whatsapp={settings.whatsapp}
+        email={settings.email}
         hasProducts={produtosAtivos > 0}
         hasShows={showsFuturos > 0}
       />

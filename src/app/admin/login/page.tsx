@@ -9,7 +9,6 @@ export default function AdminLogin() {
   return (
     <main className="min-h-[100dvh] flex items-center justify-center px-5 py-16">
       <div className="w-full max-w-sm">
-        <p className="label text-accent">Painel</p>
         <h1 className="d-l text-paper mt-3">Entrar</h1>
         <form action={action} className="surface mt-8 flex flex-col gap-5 rounded-[2px] p-6">
           {state.error && <Alert kind="error">{state.error}</Alert>}

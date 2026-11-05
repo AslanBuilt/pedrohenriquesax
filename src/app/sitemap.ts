@@ -14,7 +14,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     temShow = (await prisma.show.count({ where: { date: { gte: new Date() } } })) > 0;
   } catch { /* banco ainda não migrado */ }
 
-  const rotas = ["sobre", "eventos", "mentoria", "videos", "contato"];
+  const rotas = ["sobre", "eventos", "mentoria", "videos"];
   if (products.length) rotas.push("loja");
   if (temShow) rotas.push("agenda");
 

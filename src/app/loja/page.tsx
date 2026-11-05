@@ -7,6 +7,7 @@ import { ProductCard } from "@/components/ProductCard";
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Loja",
+  alternates: { canonical: "/loja" },
   description: "E-books, métodos e materiais de estudo de saxofone por Pedro Lucena.",
 };
 
@@ -25,8 +26,7 @@ export default async function Loja() {
   return (
     <Chrome>
       <div className="wrap section section-first">
-        <p className="label text-accent">Materiais de estudo</p>
-        <h1 className="d-l text-paper mt-3">Loja</h1>
+        <h1 className="d-l text-paper">Loja</h1>
 
         <div className="mt-9 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((p) => <ProductCard key={p.id} p={p} />)}

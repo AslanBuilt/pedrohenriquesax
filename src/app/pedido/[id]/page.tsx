@@ -41,10 +41,10 @@ export default async function PedidoPage({ params }: { params: Promise<{ id: str
   return (
     <Chrome>
       <div className="wrap-narrow section">
-        <p className="label text-accent">Pedido {order.orderNumber}</p>
-        <h1 className="d-l text-paper mt-4">
+        <h1 className="d-l text-paper">
           {pending ? "Falta o pagamento" : paid ? "Pagamento confirmado" : STATUS_LABEL[order.status]}
         </h1>
+        <p className="mt-2 text-muted">Pedido {order.orderNumber}</p>
 
         <div className="surface mt-8 rounded-[2px] p-6">
           <ul className="flex flex-col gap-3">

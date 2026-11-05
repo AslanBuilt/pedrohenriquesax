@@ -21,8 +21,6 @@ const CREDENCIAIS = [
   ["Renato Braz", "big_band", "2021—2025", "Orquestra Jovem Tom Jobim"],
   ["Nelson Ayres", "big_band", "2021—2025", "Direção da Orquestra Jovem Tom Jobim"],
   ["Tiago Costa", "big_band", "2021—2025", "Direção da Orquestra Jovem Tom Jobim"],
-  // Temporada corrente
-  ["Navios temáticos da Promoação", "temporada", "2025/26", "Saxofonista residente — festas fechadas e palcos principais das embarcações"],
   // Jazz internacional
   ["Danilo Pérez", "jazz_internacional", "2026", "Big Band do Berklee Global Jazz Institute, sax alto lead"],
   ["Jeff Coffin", "jazz_internacional", null, "Big Band Souza Lima"],

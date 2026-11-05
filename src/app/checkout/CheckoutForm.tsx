@@ -19,7 +19,7 @@ export function CheckoutForm({ defaults }: { defaults: { name: string; email: st
 
       <label className="flex items-start gap-3 text-sm text-muted cursor-pointer">
         <input type="checkbox" name="terms" required value="on"
-          className="mt-1 h-4 w-4 shrink-0 accent-[#1B6E8C] cursor-pointer" />
+          className="mt-1 h-4 w-4 shrink-0 accent-[#15120E] cursor-pointer" />
         <span>
           Li e aceito os <a href="/termos" target="_blank" className="link-underline">termos de compra</a> e a{" "}
           <a href="/privacidade" target="_blank" className="link-underline">política de privacidade</a>.

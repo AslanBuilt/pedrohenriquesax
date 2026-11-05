@@ -14,9 +14,10 @@ async function get(slug: string) {
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const p = await get((await params).slug);
+  const { slug } = await params;
+  const p = await get(slug);
   if (!p) return { title: "Produto não encontrado" };
-  return { title: p.title, description: p.subtitle || p.description.slice(0, 160) };
+  return { title: p.title, description: p.subtitle || p.description.slice(0, 160), alternates: { canonical: `/loja/${slug}` } };
 }
 
 export default async function ProdutoPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -40,8 +41,7 @@ export default async function ProdutoPage({ params }: { params: Promise<{ slug: 
 
         <div className="flex flex-col gap-6">
           <div>
-            <p className="label text-accent">Material digital</p>
-            <h1 className="d-l text-paper mt-4">{p.title}</h1>
+            <h1 className="d-l text-paper">{p.title}</h1>
             {p.subtitle && <p className="mt-3 text-lg text-muted">{p.subtitle}</p>}
           </div>
 
@@ -51,7 +51,7 @@ export default async function ProdutoPage({ params }: { params: Promise<{ slug: 
 
           {p.files.length > 0 && (
             <div>
-              <p className="label text-faint border-b border-black/10 pb-2">O que você recebe</p>
+              <p className="label text-faint border-b border-black/15 pb-2">O que você recebe</p>
               <ul className="mt-3 flex flex-col gap-2">
                 {p.files.map((f) => (
                   <li key={f.id} className="flex items-baseline justify-between gap-4 text-sm">

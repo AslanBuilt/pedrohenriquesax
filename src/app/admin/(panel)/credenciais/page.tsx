@@ -2,11 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { saveCredential, deleteCredential } from "@/app/admin/actions";
 import { AdminForm } from "@/components/admin/AdminForm";
 import { Field } from "@/components/Field";
-
-const GROUPS: [string, string][] = [
-  ["big_band", "Big bands e orquestras"], ["jazz_internacional", "Jazz internacional"],
-  ["pop_nacional", "Pop nacional"], ["festival", "Festivais"],
-];
+import { CREDENTIAL_GROUPS as GROUPS } from "@/lib/credential-groups";
 
 export default async function Credenciais() {
   const items = await prisma.credential.findMany({ orderBy: [{ context: "asc" }, { sortOrder: "asc" }] });

@@ -39,8 +39,7 @@ export default async function Conta() {
       <div className="wrap section">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <p className="label text-accent">Minha conta</p>
-            <h1 className="d-l text-paper mt-4">{customer.name || customer.email}</h1>
+            <h1 className="d-l text-paper">{customer.name || customer.email}</h1>
           </div>
           <form action={logout}><button className="btn btn-secondary btn-sm">Sair</button></form>
         </div>

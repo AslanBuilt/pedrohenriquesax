@@ -13,13 +13,12 @@ const SAIDAS: [string, string, string][] = [
   ["/eventos", "Eventos", "Contratação para casamento, corporativo e show"],
   ["/mentoria", "Mentoria", "Aula individual online de saxofone"],
   ["/sobre", "Sobre", "Trajetória, formação e credenciais"],
-  ["/contato", "Contato", "Falar comigo direto"],
+  ["/#contratar", "Contratar", "Falar comigo pelo WhatsApp"],
 ];
 
 export default function NotFound() {
   return (
     <main className="wrap-narrow flex min-h-[100dvh] flex-col justify-center py-24">
-      <p className="label text-accent">Erro 404</p>
       <h1 className="d-l text-paper mt-4">Essa página não existe</h1>
       <p className="mt-6 text-muted prose-w">
         O endereço pode ter mudado, ou o link que te trouxe até aqui veio com um pedaço a menos.

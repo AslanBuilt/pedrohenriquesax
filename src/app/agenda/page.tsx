@@ -7,6 +7,7 @@ import { Agenda } from "@/components/home/Agenda";
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Agenda",
+  alternates: { canonical: "/agenda" },
   description: "Próximas apresentações de Pedro Lucena em São Paulo.",
 };
 

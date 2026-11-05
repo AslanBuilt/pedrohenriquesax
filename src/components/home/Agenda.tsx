@@ -8,16 +8,15 @@ export function Agenda({ shows, level = "h2", className = "" }: { level?: "h1" |
   const H = level;
   if (!shows.length) return null;
   return (
-    <section id="agenda" className={`section border-t border-black/10 ${className}`}>
+    <section id="agenda" className={`section ${className}`}>
       <div className="wrap">
         <Reveal>
-          <p className="label text-accent">Onde me ver</p>
-          <H className="d-l text-paper mt-3">Agenda</H>
+          <H className="d-l text-paper">Agenda</H>
         </Reveal>
         <ul className="mt-10">
           {shows.map((s, i) => (
             <Reveal as="li" key={s.id} delay={i * 55}>
-              <div className="grid grid-cols-1 gap-1 border-b border-black/10 py-5 sm:grid-cols-[130px_1fr_auto] sm:items-baseline sm:gap-6">
+              <div className="grid grid-cols-1 gap-1 border-b border-black/15 py-5 sm:grid-cols-[130px_1fr_auto] sm:items-baseline sm:gap-6">
                 <time dateTime={s.date.toISOString()} className="mono text-sm text-accent">{fmt.format(s.date)}</time>
                 <div>
                   <p className="d-nar text-paper text-[1.05rem]">{s.venue}</p>

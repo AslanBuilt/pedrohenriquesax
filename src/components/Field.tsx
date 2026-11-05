@@ -12,7 +12,6 @@ export function Field({
       <label htmlFor={id}>
         {label} {required && <span className="text-accent">*</span>}
       </label>
-      {hint && <p id={`${id}-hint`} className="hint">{hint}</p>}
       {textarea ? (
         <textarea id={id} name={name} required={required} defaultValue={defaultValue} placeholder={placeholder}
           className="textarea" aria-invalid={!!error} aria-describedby={describedBy} />
@@ -21,6 +20,9 @@ export function Field({
           autoComplete={autoComplete} inputMode={inputMode}
           className="input" aria-invalid={!!error} aria-describedby={describedBy} />
       )}
+      {/* A dica vem depois do campo: acima, ela empurrava o input e dois campos
+          lado a lado ficavam desalinhados. */}
+      {hint && <p id={`${id}-hint`} className="hint">{hint}</p>}
       {error && <p id={`${id}-err`} className="error-text" role="alert">{error}</p>}
     </div>
   );

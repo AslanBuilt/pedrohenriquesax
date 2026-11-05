@@ -9,6 +9,9 @@ export default async function Mensagens() {
   return (
     <>
       <h1 className="d-l text-paper">Mensagens</h1>
+      <p className="mt-4 text-muted prose-w">
+        Pedidos novos chegam direto no seu WhatsApp. Aqui ficam só os antigos, de quando o formulário do site gravava neste painel.
+      </p>
       {msgs.length ? (
         <ul className="mt-8 flex flex-col gap-3">
           {msgs.map((m) => {
