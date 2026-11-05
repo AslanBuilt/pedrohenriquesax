@@ -8,7 +8,7 @@ import { ShoppingBagOpen, List, X, UserCircle } from "@phosphor-icons/react";
 
 /**
  * Uma linha, sempre. 68px e branca, exceto sobre o herói da home: ali é
- * transparente e não repete o nome nem o botão, que o herói já mostra em grande.
+ * transparente e não repete o botão, que o herói já mostra em grande.
  * Abaixo de 1024px vira gaveta em tela cheia; o botão de contratar e o carrinho
  * continuam visíveis na barra.
  *
@@ -59,7 +59,7 @@ export function SiteHeader({ cartCount = 0, loggedIn = false, whatsapp = "", ema
         transparente ? "on-dark border-transparent bg-transparent" : "border-black/10 bg-white"
       }`}>
         <div className="wrap flex h-[68px] items-center justify-between gap-4">
-          <Link href="/" className={`d-m flex min-h-[44px] shrink-0 items-center whitespace-nowrap text-paper transition-opacity duration-300 ${transparente ? "invisible opacity-0" : "opacity-100"}`}>
+          <Link href="/" className={`d-m flex min-h-[44px] shrink-0 items-center whitespace-nowrap transition-colors duration-300 ${transparente ? "text-white" : "text-paper"}`}>
             Pedro Lucena
           </Link>
 

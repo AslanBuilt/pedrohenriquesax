@@ -54,7 +54,7 @@ export default async function Home() {
     "@context": "https://schema.org", "@type": "Person",
     name: settings.name, jobTitle: "Saxofonista",
     description: settings.bioMedium || settings.bioShort, url: site,
-    image: `${site}/fotos/hero-v2.jpg`,
+    image: `${site}/fotos/hero-v3.jpg`,
     ...(settings.whatsapp && { telephone: settings.whatsapp }),
     ...(settings.email && { email: settings.email }),
     address: { "@type": "PostalAddress", addressLocality: settings.city, addressCountry: "BR" },

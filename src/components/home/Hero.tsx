@@ -4,8 +4,8 @@ import { HireButton } from "@/components/HireButton";
 import { SoloDisc } from "@/components/home/SoloDisc";
 
 /**
- * A foto dele com o saxofone em tela cheia, o nome, o disco que toca o solo e um botão grande. O sax já diz
- * o que ele faz: "saxofonista em São Paulo" fica só para leitores de tela e buscadores.
+ * O retrato dele de perto, a frase, o botão e o disco que toca o solo. O nome já está no menu e fica no
+ * h1 para leitores de tela e buscadores, junto com "saxofonista em São Paulo".
  *
  * Fixa no código porque o texto branco depende do fundo preto dela.
  */
@@ -14,26 +14,25 @@ export function Hero({ settings: s }: { settings: Settings }) {
     <section id="heroi" className="on-dark relative isolate flex min-h-[calc(100dvh-76px)] flex-col justify-end overflow-hidden bg-night lg:min-h-[max(640px,100dvh)]">
       <div className="hero-foto absolute -z-10 max-lg:inset-0">
         <Image
-          src="/fotos/hero-v2.jpg"
+          src="/fotos/hero-v3.jpg"
           alt={`${s.name} com o saxofone tenor`}
           fill
           priority
-          sizes="(max-width: 1023px) 100vw, min(100vw, 167dvh)"
+          sizes="(max-width: 1023px) 100vw, min(52vw, 84dvh)"
           className="foto-abre origin-top object-cover object-top"
         />
       </div>
-      <div className="absolute inset-x-0 bottom-0 -z-10 h-1/3 bg-gradient-to-t from-black/60 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-black/85 to-transparent lg:h-1/3 lg:from-black/60" />
 
-      <div className="wrap flex items-end justify-between gap-8 pb-8 lg:pb-14">
-        <h1>
-          <span className="sobe d-xl block text-white">
-            {s.name.split(" ").map((w) => <span key={w} className="block">{w}</span>)}
-          </span>
-          <span className="sr-only">, {s.tagline.toLowerCase()} em {s.city}</span>
+      <div className="wrap pb-8 lg:pb-14">
+        <h1 className="sobe d-hero text-white">
+          <span className="sr-only">{s.name}, {s.tagline.toLowerCase()} em {s.city}. </span>
+          <span className="block">A música</span>
+          <span className="block italic text-brass">chega primeiro.</span>
         </h1>
-        <span className="sobe flex items-center gap-5" style={{ animationDelay: "220ms" }}>
-          <SoloDisc />
+        <span className="sobe mt-8 flex items-center gap-5 lg:mt-10" style={{ animationDelay: "220ms" }}>
           <HireButton className="btn btn-primary btn-xl hidden lg:inline-flex" />
+          <SoloDisc />
         </span>
       </div>
     </section>

@@ -78,13 +78,15 @@ body {
 @layer components {
 /* ── Tipografia ─────────────────────────────────────────────── */
 /* DM Serif tem um peso só: nada de negrito sintético nos títulos. */
-.d-xl, .d-l, .d-m, .d-s {
+.d-hero, .d-xl, .d-l, .d-m, .d-s {
   font-family: var(--font-display);
   font-weight: 400;
   font-synthesis: none;
   text-wrap: balance;
 }
 .d-xl { font-size: clamp(3.75rem, 8vw, 7.5rem); line-height: 0.98; letter-spacing: -0.01em; }
+.d-hero { font-size: 13vw; line-height: 0.98; letter-spacing: -0.01em; }
+@media (min-width: 1024px) { .d-hero { font-size: min(8.4vw, 8.5rem); } }
 .d-l { font-size: clamp(2.1rem, 4.2vw, 3.25rem); line-height: 1.08; letter-spacing: -0.005em; }
 .d-m { font-size: clamp(1.4rem, 2.4vw, 1.8rem); line-height: 1.18; }
 .d-s { font-size: clamp(1.15rem, 1.7vw, 1.35rem); line-height: 1.3; }
@@ -203,20 +205,18 @@ body {
 .on-dark .btn-ghost { color: #fff; }
 .on-dark :focus-visible { outline-color: var(--color-brass); }
 
-/* Foto do herói no computador. O tamanho é o menor entre o que a largura e a altura
-   pedem, para uma janela larga e baixa não ampliar só o rosto. A foto tem 2:3 e a
-   cabeça começa em 8% da altura: os 92px a deixam logo abaixo do menu. As laterais
-   dissolvem no preto quando a foto é mais estreita que a tela. */
+/* Foto do herói no computador: o retrato de perto, encostado à direita, dissolvendo no preto
+   à esquerda, onde fica o título. O tamanho é o menor entre o que a largura e a altura pedem,
+   e o cabelo começa em 10% da altura da foto: os 92px o deixam logo abaixo do menu. */
 @media (min-width: 1024px) {
   .hero-foto {
-    --altura: min(150vw, 250dvh);
+    --altura: min(78vw, 125dvh);
     inset: auto;
-    left: 50%;
-    top: calc(92px - var(--altura) * 0.08);
+    right: 0;
+    top: calc(92px - var(--altura) * 0.1);
     width: calc(var(--altura) * 2 / 3);
     height: var(--altura);
-    translate: -50% 0;
-    mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 34%);
   }
 }
 
