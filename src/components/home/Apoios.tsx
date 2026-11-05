@@ -10,9 +10,9 @@ const APOIOS = [
 /** Fecha a ficha técnica. Um vão só entre os logos, qualquer que seja a largura de cada um. */
 export function Apoios() {
   return (
-    <div className="mt-12 border-t border-paper pt-8">
+    <div className="mt-12 flex flex-col gap-6 border-t border-paper pt-8 md:flex-row md:items-center md:justify-between">
       <h3 className="d-m text-paper">Apoio</h3>
-      <ul className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-6 sm:gap-x-10 md:gap-x-16">
+      <ul className="flex flex-wrap items-center gap-x-6 gap-y-6 sm:gap-x-10 md:gap-x-16">
         {APOIOS.map((a) => (
           <li key={a.nome}>
             <Image src={a.src} alt={a.nome} width={a.w} height={a.h} className={`w-auto ${a.cls}`} />

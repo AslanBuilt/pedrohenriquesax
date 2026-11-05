@@ -10,7 +10,7 @@ const FOTOS: [string, string][] = [
   ["/fotos/g02.jpg", "50% 20%"],
   ["/video/solo-bigband.jpg", "60% 28%"],
   ["/fotos/g13.jpg", "50% 30%"],
-  ["/fotos/live-sax-palco.jpg", "50% 50%"],
+  ["/fotos/sobre-hoje.jpg", "50% 25%"],
 ];
 
 /** A primeira frase vira o título do capítulo; o resto do parágrafo, o texto. */

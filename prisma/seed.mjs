@@ -37,8 +37,6 @@ const CREDENCIAIS = [
   // Grandes eventos e festivais
   ["CCXP", "festival", "2024", "Palco Thunder, Qualcomm — abertura, trilhas de games e cinema"],
   ["Festival Internacional de Campos do Jordão", "festival", "2022", "Bolsista"],
-  ["Ari Colares", "festival", "2025", null],
-  ["Mônica Salmaso", "festival", null, null],
 ];
 
 const BIO_LONGA = `Pedro Lucena é saxofonista, natural de São Paulo, bacharel em Música com especialidade em saxofone pela Faculdade Souza Lima & Berklee College of Music.
