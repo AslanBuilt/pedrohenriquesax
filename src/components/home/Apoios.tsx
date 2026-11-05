@@ -7,14 +7,18 @@ const APOIOS = [
   { nome: "La Musica", src: "/marca/apoio-la-musica.png", w: 494, h: 415, cls: "h-14 md:h-16" },
 ];
 
-/** Fecha a ficha técnica nas mesmas cinco colunas: cada logo começa onde começa uma coluna. */
+/** Fecha a ficha técnica. Um vão só entre os logos, qualquer que seja a largura de cada um. */
 export function Apoios() {
   return (
-    <div className="mt-12 grid grid-cols-2 items-center gap-x-6 gap-y-8 border-t border-paper pt-8 lg:grid-cols-5">
-      <h3 className="d-m col-span-2 text-paper">Apoio</h3>
-      {APOIOS.map((a) => (
-        <Image key={a.nome} src={a.src} alt={a.nome} width={a.w} height={a.h} className={`w-auto justify-self-start ${a.cls}`} />
-      ))}
+    <div className="mt-12 border-t border-paper pt-8">
+      <h3 className="d-m text-paper">Apoio</h3>
+      <ul className="mt-6 flex flex-wrap items-center gap-x-10 gap-y-6 md:gap-x-16">
+        {APOIOS.map((a) => (
+          <li key={a.nome}>
+            <Image src={a.src} alt={a.nome} width={a.w} height={a.h} className={`w-auto ${a.cls}`} />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
