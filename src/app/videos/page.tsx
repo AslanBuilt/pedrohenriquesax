@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { Chrome } from "@/components/Chrome";
+import { getSettings } from "@/lib/settings";
 import { HireButton } from "@/components/HireButton";
 import { PhotoBand } from "@/components/PhotoBand";
 import { VideoSection } from "@/components/VideoSection";
@@ -32,10 +33,13 @@ const GRUPOS = [
 ];
 
 export default async function Videos() {
-  const items = await prisma.mediaItem.findMany({
-    where: { kind: "video" },
-    orderBy: [{ featured: "desc" }, { sortOrder: "asc" }],
-  });
+  const [items, { spotifyUrl }] = await Promise.all([
+    prisma.mediaItem.findMany({
+      where: { kind: "video" },
+      orderBy: [{ featured: "desc" }, { sortOrder: "asc" }],
+    }),
+    getSettings(),
+  ]);
 
   const site = process.env.SITE_URL || "http://localhost:3000";
   const ld = videosJsonLd(items, site);
@@ -52,9 +56,9 @@ export default async function Videos() {
           if (!doGrupo.length) return null;
           return (
             <Fragment key={g.key}>
-              <VideoSection items={doGrupo} id={g.key} title={g.title} sub />
-              {/* A playlist separa os dois grupos: fundo igual em seguida, não. */}
-              {i === 0 && <Spotify playlistId="2DoalDFTdg45JYx1t4V9eP" />}
+              {/* Branco no segundo grupo: dois fundos iguais em seguida, não. */}
+              <VideoSection items={doGrupo} id={g.key} title={g.title} sub className={i > 0 ? "bg-surface" : ""} />
+              {i === 0 && <Spotify url={spotifyUrl} />}
             </Fragment>
           );
         })

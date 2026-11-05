@@ -26,8 +26,6 @@ const CAMINHOS = [
   { href: "/mentoria", title: "Mentoria", foto: "/fotos/g11.jpg", pos: "50% 100%" },
 ];
 
-const PLAYLIST = "2DoalDFTdg45JYx1t4V9eP";
-
 const SERVICOS = [
   "Saxofonista para casamentos", "Saxofonista para eventos corporativos", "Live sax",
   "Saxofonista para shows e gravações em estúdio", "Aula de saxofone online",
@@ -100,7 +98,7 @@ export default async function Home() {
 
         {/* Preto e claro sempre alternados. O rodapé é preto, então termina em claro. */}
         <VideoSection items={videos} id="midia" title="Assista" verMais className="on-dark bg-night !border-0" />
-        <Spotify playlistId={PLAYLIST} />
+        <Spotify url={settings.spotifyUrl} />
         <Credentials items={credentials} />
         <Agenda shows={shows} className="bg-raised" />
 
