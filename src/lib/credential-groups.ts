@@ -12,7 +12,7 @@ const LABELS: Record<CredentialGroup, string> = {
   temporada: "Temporada",
   jazz_internacional: "Jazz internacional",
   pop_nacional: "Pop nacional",
-  festival: "Grandes eventos e festivais",
+  festival: "Festivais",
 };
 
 export const CREDENTIAL_GROUPS = Object.entries(LABELS) as [CredentialGroup, string][];

@@ -12,15 +12,9 @@ const CREDENCIAIS = [
   ["Souza Lima & Berklee", "formacao", null, null],
   ["Escola de Música do Estado de São Paulo", "formacao", null, null],
   // Big bands e orquestras
+  ["Banda Sinfônica da Escola Municipal de Música de São Paulo", "big_band", null, null],
+  ["Banda Sinfônica de Tatuí", "big_band", null, null],
   ["Orquestra Sinfônica Villa Lobos", "big_band", null, "Tributo a Tina Turner"],
-  ["Mônica Salmaso", "big_band", "2021—2025", "Orquestra Jovem Tom Jobim"],
-  ["Livia Nestrovski", "big_band", "2021—2025", "Orquestra Jovem Tom Jobim"],
-  ["Guinga", "big_band", "2021—2025", "Orquestra Jovem Tom Jobim"],
-  ["Vanessa Moreno", "big_band", "2021—2025", "Orquestra Jovem Tom Jobim"],
-  ["Ayrton Montarroyos", "big_band", "2021—2025", "Orquestra Jovem Tom Jobim"],
-  ["Renato Braz", "big_band", "2021—2025", "Orquestra Jovem Tom Jobim"],
-  ["Nelson Ayres", "big_band", "2021—2025", "Direção da Orquestra Jovem Tom Jobim"],
-  ["Tiago Costa", "big_band", "2021—2025", "Direção da Orquestra Jovem Tom Jobim"],
   // Jazz internacional
   ["Danilo Pérez", "jazz_internacional", "2026", "Big Band do Berklee Global Jazz Institute, sax alto lead"],
   ["Jeff Coffin", "jazz_internacional", null, "Big Band Souza Lima"],

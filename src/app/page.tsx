@@ -18,11 +18,11 @@ import { videosJsonLd } from "@/lib/youtube";
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
-/* Três situações, não três retratos: ele tocando numa festa, solando com a big
-   band e as mãos no instrumento. O estúdio e os rostos ficam nas páginas. */
+/* Três enquadramentos do ensaio, para os cartões não repetirem. As fotos de celular
+   saíram daqui: o Pedro as achou informais para capa. */
 const CAMINHOS = [
-  { href: "/eventos", title: "Eventos", foto: "/fotos/live-sax-palco.jpg", pos: "50% 50%" },
-  { href: "/videos", title: "Palco e estúdio", foto: "/video/solo-bigband.jpg", pos: "60% 28%" },
+  { href: "/eventos", title: "Eventos", foto: "/fotos/card-eventos.jpg", pos: "50% 25%" },
+  { href: "/videos", title: "Palco e estúdio", foto: "/fotos/card-palco.jpg", pos: "50% 20%" },
   { href: "/mentoria", title: "Mentoria", foto: "/fotos/g11.jpg", pos: "50% 100%" },
 ];
 

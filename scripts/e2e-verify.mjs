@@ -27,7 +27,8 @@ t('nenhum id duplicado', await p.evaluate(()=>{const s=new Set(),d=[];for(const 
 await p.goto(B+'/',{waitUntil:'networkidle'});
 const credText = await p.locator('#credenciais').textContent();
 await p.goto(B+'/sobre',{waitUntil:'networkidle'});
-t('Guinga · Danilo Pérez · Jeff Coffin', ['Guinga','Danilo Pérez','Jeff Coffin','Anat Cohen','Dilsinho'].every(n=>credText.includes(n)));
+t('ficha técnica com os nomes certos', ['Banda Sinfônica de Tatuí','Danilo Pérez','Jeff Coffin','Anat Cohen','Dilsinho','Festivais'].every(n=>credText.includes(n)));
+t('big band só com grupos', !credText.includes('Guinga') && !credText.includes('Grandes eventos'));
 t('navios temáticos fora do site', !credText.includes('Navios'));
 t('canonical da própria página', (await p.locator('link[rel=canonical]').getAttribute('href')).endsWith('/sobre'));
 t('todo input tem label', await p.evaluate(()=>[...document.querySelectorAll('input:not([type=hidden]),textarea,select')].every(i=>i.labels?.length>0||i.getAttribute('aria-label'))));
