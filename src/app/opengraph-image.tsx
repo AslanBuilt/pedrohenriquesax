@@ -17,8 +17,7 @@ export const alt = "Pedro Lucena — saxofonista em São Paulo";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const NIGHT = "#070506";
-const BRASS = "#D2AE5C";
+const NIGHT = "#0A0A0A";
 
 export default async function OpengraphImage() {
   let photo = "";
@@ -26,11 +25,14 @@ export default async function OpengraphImage() {
     /* Caminho relativo estático (não `process.cwd()` + join): assim o tracing
        do Turbopack enxerga exatamente este arquivo, em vez de concluir que a
        rota lê o projeto inteiro. */
-    const buf = await readFile(new URL("../../public/fotos/hero-v2.jpg", import.meta.url));
+    const buf = await readFile(new URL("../../public/fotos/credenciais.jpg", import.meta.url));
     photo = `data:image/jpeg;base64,${Buffer.from(buf).toString("base64")}`;
   } catch {
     // Sem a foto o cartão ainda sai: fundo do tema, tipografia igual.
   }
+
+  /* O mesmo herói da home: ele de costas no centro, o nome dividido em volta, numa cor só. */
+  const nome = { display: "flex", fontSize: 62, fontWeight: 400, color: "#FFFFFF", letterSpacing: 11, lineHeight: 1 };
 
   return new ImageResponse(
     (
@@ -38,43 +40,20 @@ export default async function OpengraphImage() {
         {photo ? (
           <img
             src={photo}
-            width={size.width * 0.6}
+            width={size.width}
             height={size.height}
-            style={{ position: "absolute", top: 0, right: 0, width: size.width * 0.6, height: size.height, objectFit: "cover", objectPosition: "50% 14%" }}
+            style={{ position: "absolute", top: 0, left: 0, width: size.width, height: size.height, objectFit: "cover", objectPosition: "50% 26%", opacity: 0.74 }}
           />
         ) : null}
 
         <div
           style={{
-            position: "absolute", top: 0, left: 0, width: size.width, height: size.height,
-            background: `linear-gradient(90deg, ${NIGHT} 42%, rgba(7,5,6,0.75) 56%, rgba(7,5,6,0) 74%)`,
-          }}
-        />
-
-        <div
-          style={{
-            position: "relative", display: "flex", flexDirection: "column", justifyContent: "center",
-            width: 780, height: "100%", padding: "0 76px",
+            position: "absolute", left: 64, right: 50, bottom: 92,
+            display: "flex", justifyContent: "space-between", alignItems: "flex-end",
           }}
         >
-          <div style={{ display: "flex", color: BRASS, fontSize: 30 }}>
-            Saxofonista em São Paulo
-          </div>
-
-          <div style={{ display: "flex", flexDirection: "column", marginTop: 20 }}>
-            <div style={{ display: "flex", fontSize: 108, fontWeight: 800, color: "#FFFFFF", lineHeight: 1, letterSpacing: -3 }}>
-              Pedro
-            </div>
-            <div style={{ display: "flex", fontSize: 108, fontWeight: 800, color: "#FFFFFF", lineHeight: 1, letterSpacing: -3 }}>
-              Lucena
-            </div>
-          </div>
-
-          <div style={{ display: "flex", marginTop: 30, fontSize: 27, color: "rgba(255,255,255,0.8)", lineHeight: 1.35 }}>
-            Souza Lima &amp; Berklee · big bands, jazz e eventos
-          </div>
-
-          <div style={{ display: "flex", marginTop: 26, width: 64, height: 4, background: BRASS }} />
+          <div style={nome}>PEDRO</div>
+          <div style={nome}>LUCENA</div>
         </div>
       </div>
     ),

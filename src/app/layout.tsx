@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Serif_Display, Hanken_Grotesk } from "next/font/google";
+import { DM_Serif_Display, Hanken_Grotesk, Outfit } from "next/font/google";
 import "./globals.css";
 
 /* Só o subconjunto `latin`: ele já cobre todo o português. */
@@ -14,6 +14,14 @@ const hanken = Hanken_Grotesk({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-hanken",
+});
+
+/* Só o nome no herói, fino e espaçado como uma marca (a 85, escolhida pelo Pedro em 09/11/2026). */
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: "300",
+  display: "swap",
+  variable: "--font-marca",
 });
 
 const SITE = process.env.SITE_URL || "http://localhost:3000";
@@ -48,7 +56,7 @@ export const viewport: Viewport = { themeColor: "#FFFFFF", width: "device-width"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning className={`${serif.variable} ${hanken.variable}`}>
+    <html lang="pt-BR" suppressHydrationWarning className={`${serif.variable} ${hanken.variable} ${outfit.variable}`}>
       <head>
         <script
           dangerouslySetInnerHTML={{

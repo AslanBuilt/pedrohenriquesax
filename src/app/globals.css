@@ -205,19 +205,22 @@ body {
 .on-dark .btn-ghost { color: #fff; }
 .on-dark :focus-visible { outline-color: var(--color-brass); }
 
-/* Foto do herói no computador: o retrato de perto, encostado à direita, dissolvendo no preto
-   à esquerda, onde fica o título. O tamanho é o menor entre o que a largura e a altura pedem,
-   e o cabelo começa em 10% da altura da foto: os 92px o deixam logo abaixo do menu. */
+/* O nome no herói, como marca: uma letra fina, em caixa alta e espaçada, numa cor só.
+   O espaço depois da última letra sai pela direita, para o "Lucena" fechar na margem. */
+.marca {
+  font-family: var(--font-marca), var(--font-sans); font-weight: 300; line-height: 1;
+  text-transform: uppercase; letter-spacing: 0.14em; white-space: nowrap;
+  font-size: clamp(2.5rem, 11vw, 3rem);
+}
+.marca > span:not(.sr-only) { margin-right: -0.14em; }
+@media (min-width: 1024px) { .marca { font-size: clamp(3.5rem, 5.3vw, 5.5rem); } }
+
+/* A foto do herói: ele de costas, no centro. No celular ocupa a faixa toda; no computador
+   fica em 90% da largura e some nas laterais, onde fica o nome. */
+.hero-faixa img { object-position: 46% 26%; filter: brightness(0.74) contrast(1.15); }
 @media (min-width: 1024px) {
-  .hero-foto {
-    --altura: min(78vw, 125dvh);
-    inset: auto;
-    right: 0;
-    top: calc(92px - var(--altura) * 0.1);
-    width: calc(var(--altura) * 2 / 3);
-    height: var(--altura);
-    mask-image: linear-gradient(to right, transparent, #000 34%);
-  }
+  .hero-faixa { left: 5vw; right: 5vw; mask-image: linear-gradient(to right, transparent, #000 18%, #000 82%, transparent); }
+  .hero-faixa img { object-position: 50% 26%; }
 }
 
 /* A foto dissolve no preto, sem emenda: embaixo no celular, à esquerda no computador. */
