@@ -25,30 +25,29 @@ export default async function OpengraphImage() {
     /* Caminho relativo estático (não `process.cwd()` + join): assim o tracing
        do Turbopack enxerga exatamente este arquivo, em vez de concluir que a
        rota lê o projeto inteiro. */
-    const buf = await readFile(new URL("../../public/fotos/credenciais.jpg", import.meta.url));
+    const buf = await readFile(new URL("../../public/fotos/g06.jpg", import.meta.url));
     photo = `data:image/jpeg;base64,${Buffer.from(buf).toString("base64")}`;
   } catch {
     // Sem a foto o cartão ainda sai: fundo do tema, tipografia igual.
   }
 
-  /* O mesmo herói da home: ele de costas, o nome inteiro numa linha e a frase embaixo. */
+  /* O mesmo herói da home: ele sentado com o sax, o nome de margem a margem e a frase embaixo. */
   return new ImageResponse(
     (
       <div style={{ width: "100%", height: "100%", display: "flex", background: NIGHT, position: "relative" }}>
         {photo ? (
           <img
             src={photo}
-            width={1146}
-            height={630}
-            style={{ position: "absolute", top: 0, left: -160, width: 1146, height: 630, opacity: 0.74 }}
+            width={1400}
+            height={933}
+            style={{ position: "absolute", top: 0, left: -110, width: 1400, height: 933 }}
           />
         ) : null}
-        {/* A foto some no preto à direita, como no herói. */}
-        <div style={{ position: "absolute", top: 0, left: 0, width: size.width, height: size.height, background: `linear-gradient(90deg, rgba(10,10,10,0) 60%, ${NIGHT} 82%)` }} />
+        <div style={{ position: "absolute", top: 0, left: 0, width: size.width, height: size.height, background: "rgba(10,10,10,0.42)" }} />
 
-        <div style={{ position: "absolute", left: 64, right: 64, bottom: 64, display: "flex", flexDirection: "column" }}>
-          <div style={{ display: "flex", fontSize: 112, fontWeight: 700, color: "#FFFFFF", lineHeight: 1 }}>PEDRO LUCENA</div>
-          <div style={{ display: "flex", marginTop: 22, fontSize: 26, color: "rgba(255,255,255,0.78)", letterSpacing: 2 }}>
+        <div style={{ position: "absolute", left: 0, right: 0, top: 318, display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <div style={{ display: "flex", fontSize: 132, fontWeight: 700, color: "#FFFFFF", lineHeight: 1 }}>PEDRO LUCENA</div>
+          <div style={{ display: "flex", marginTop: 20, fontSize: 19, color: "rgba(255,255,255,0.85)", letterSpacing: 5 }}>
             Do palco ao estúdio, do jazz ao pop. Música com identidade, em cada nota.
           </div>
         </div>

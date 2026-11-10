@@ -8,7 +8,8 @@ import { ShoppingBagOpen, List, X, UserCircle } from "@phosphor-icons/react";
 
 /**
  * Uma linha, sempre. 68px e branca, exceto sobre o herói da home: ali é
- * transparente e não repete o nome nem o botão, que o herói já mostra em grande.
+ * transparente e não repete o nome, que o herói já mostra em grande. O botão de contratar fica
+ * sempre: desde 10/11/2026 o herói não tem botão, como na edição do Pedro.
  * Abaixo de 1024px vira gaveta em tela cheia; o botão de contratar e o carrinho
  * continuam visíveis na barra.
  *
@@ -81,7 +82,7 @@ export function SiteHeader({ cartCount = 0, loggedIn = false, whatsapp = "", ema
           </nav>
 
           <div className="flex items-center gap-1">
-            <HireButton tipo={tipoDaPagina} className={`btn btn-primary mr-1 hidden transition-opacity duration-300 lg:inline-flex ${transparente ? "invisible opacity-0" : "opacity-100"}`} />
+            <HireButton tipo={tipoDaPagina} className="btn btn-primary mr-1 hidden lg:inline-flex" />
             {mostrarConta && <Link href="/conta" aria-label={loggedIn ? "Minha conta" : "Entrar"} title={loggedIn ? "Minha conta" : "Entrar"} className="btn btn-ghost hidden px-2 sm:inline-flex sm:px-3">
               <UserCircle size={22} weight="regular" aria-hidden />
             </Link>}

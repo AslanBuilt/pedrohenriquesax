@@ -71,8 +71,8 @@ Acesso local do painel: `pedro@pedrolucenasax.com` / `pedro2026` (trocar em prod
    WhatsApp do Pedro. `/contato` redireciona para `/#contratar`. `/admin/mensagens` guarda só os
    pedidos antigos. `npm test` cobre a montagem da mensagem.
 
-9. **Um botão de contratar visível por vez.** No topo da home, o do herói; depois de rolar e nas
-   outras páginas, o do cabeçalho; no celular, a barra fixa. Em `/mentoria` ele abre em aula.
+9. **Um botão de contratar visível por vez.** No computador, o do cabeçalho, também sobre o herói
+   (que não tem botão desde 10/11/2026); no celular, a barra fixa. Em `/mentoria` ele abre em aula.
 
 10. **Sem produto ativo, a loja some inteira:** Loja, carrinho e os links de conta só aparecem com
     produto ou com cliente logado. O e-mail de pagamento confirmado nunca foi testado em produção:
@@ -85,13 +85,14 @@ Referências do Pedro em 05/11/2026: ameliasaz.com (simplicidade, grade de fotos
 
 - Tipografia: **DM Serif Display** nos títulos, **Hanken Grotesk** no corpo, **Outfit** no nome do herói e no menu. Sem letra cursiva:
   testada no nome e rejeitada em 05/11/2026. Bodoni também: difícil de ler sobre o preto.
-- **Herói:** a edição que o próprio Pedro montou em 10/11/2026 a partir da 85 (que ele achou "meio vazia").
-  Faixa preta com `credenciais.jpg` (ele de costas) inteira na altura da faixa, a cabeça um pouco à esquerda do
-  centro; "PEDRO LUCENA" numa linha só em **Outfit 500**, branco, sobre os ombros (abaixo do queixo: a faixa tem
-  de 620 a 760px para isso); embaixo a frase "Do palco ao estúdio, do jazz ao pop. Música com identidade, em cada
-  nota." e o Contratar à direita. No celular o nome quebra em duas linhas. A edição dele tinha "SAXOFONISTA" em
-  cima do nome e uma logo no canto: o primeiro ficou de fora pela regra do eyebrow, a logo falta o arquivo.
-  A imagem de link (`opengraph-image.tsx`) repete o herói. Antes (09/11) foi a 85, com o nome dividido em volta dele.
+- **Herói:** a edição que o próprio Pedro montou em 10/11/2026 (ele achou a 85 "meio vazia"). `g06.jpg`, ele
+  sentado com o sax no suporte, em preto e branco; "PEDRO LUCENA" numa linha só em **Outfit 500**, branco, de
+  margem a margem sobre o peito, abaixo da barba; embaixo, centrada e espaçada, a frase "Do palco ao estúdio, do
+  jazz ao pop. Música com identidade, em cada nota." A faixa tem a proporção da edição dele (2,27:1) até 760px de
+  altura; numa tela mais larga a foto fica centrada e some nas laterais. Sem botão no herói: o Contratar do
+  cabeçalho aparece sobre ele. No celular o nome quebra em duas linhas. A edição dele tinha "SAXOFONISTA" em cima
+  do nome e uma logo no canto: o primeiro ficou de fora pela regra do eyebrow, a logo falta o arquivo.
+  A imagem de link (`opengraph-image.tsx`) repete o herói.
 - **Solo:** o disco que tocava o solo no herói saiu em 09/11/2026, a pedido do Pedro. O áudio
   `public/audio/solo-bigband.m4a` continua no repositório.
 - **Menu:** no computador, à direita junto dos ícones, em Outfit caixa alta espaçada (pedidos do Pedro em 09 e 10/11/2026).
