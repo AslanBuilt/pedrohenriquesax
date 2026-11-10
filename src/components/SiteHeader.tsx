@@ -63,6 +63,7 @@ export function SiteHeader({ cartCount = 0, loggedIn = false, whatsapp = "", ema
             Pedro Lucena
           </Link>
 
+          <div className="flex items-center gap-8">
           <nav aria-label="Principal" className="hidden lg:flex items-center gap-6">
             {links.map((l) => {
               const active = pathname === l.href || pathname.startsWith(l.href + "/");
@@ -102,6 +103,7 @@ export function SiteHeader({ cartCount = 0, loggedIn = false, whatsapp = "", ema
             >
               {open ? <X size={22} aria-hidden /> : <List size={22} aria-hidden />}
             </button>
+          </div>
           </div>
         </div>
       </header>

@@ -53,7 +53,7 @@ Acesso local do painel: `pedro@pedrolucenasax.com` / `pedro2026` (trocar em prod
 4. **A confirmação de pagamento é manual e isso é intencional.** Chave Pix estática não
    notifica o site. Toda tela que fala de pagamento precisa dizer isso ao cliente.
 
-5. **Primeira tela preta, resto claro, um acento só.** Raio 2px em tudo, menos botões (pílula). Tokens no topo de
+5. **Primeira tela preta, resto claro, um acento só.** Raio 2px em tudo, botões inclusive (eram pílula; o Pedro pediu quadrado em 09/11/2026). Tokens no topo de
    `src/app/globals.css`. Decidido na reunião de 05/11/2026; antes era branco com azul-bebê.
 
    O acento é o ouro do saxofone, em duas funções: `--color-brass` (`#D2AE5C`) sobre o preto e
@@ -88,11 +88,12 @@ Referências do Pedro em 05/11/2026: ameliasaz.com (simplicidade, grade de fotos
 - **Herói:** a versão 85, escolhida pelo Pedro em 09/11/2026 entre 88 maquetes. Faixa preta de ~64% da tela com
   `credenciais.jpg` (ele de costas) no centro, sumindo nas laterais; o nome em **Outfit 300**, caixa alta e espaçada,
   branco, numa cor só, como marca: "Pedro" à esquerda e "Lucena" à direita, logo acima do Contratar e do disco. No celular,
-  "Pedro" em cima à esquerda e "Lucena" embaixo à direita. A página clara já aparece abaixo da faixa. Ele pediu uma cor só
+  "Pedro" em cima à esquerda e "Lucena" embaixo à direita. Sem o disco do solo, a pedido dele. A página clara já aparece abaixo da faixa. Ele pediu uma cor só
   e letra de logomarca, com referências de portfólio em preto e branco ("simples funciona"). A imagem de link
   (`opengraph-image.tsx`) usa a mesma foto e o mesmo nome dividido. "Saxofonista em São Paulo" só para leitor de tela e busca.
-- **Solo:** o disco no herói (`home/SoloDisc.tsx`) toca `public/audio/solo-bigband.m4a`, recortado de
-  `public/video/solo-bigband.mp4`.
+- **Solo:** o disco que tocava o solo no herói saiu em 09/11/2026, a pedido do Pedro. O áudio
+  `public/audio/solo-bigband.m4a` continua no repositório.
+- **Menu:** no computador, Sobre, Eventos e Mentoria ficam à direita, junto dos ícones (pedido do Pedro em 09/11/2026).
 - **Seções:** fundos alternados entre preto e claro, nunca dois iguais em seguida, e nada de
   faixas baixas soltas. O rodapé é preto, então a última seção de cada página é clara.
 - **Ficha técnica e apoios:** só na home, numa seção só, sem repetir em `/sobre`. Mostra os nomes;

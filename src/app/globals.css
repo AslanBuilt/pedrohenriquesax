@@ -138,7 +138,7 @@ body {
 .btn:active { transform: scale(0.985); }
 .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 /* Botões são pílula, com a serifa dos títulos no principal. É a única exceção ao raio de 2px. */
-.btn { border-radius: 999px !important; }
+.btn { border-radius: 2px !important; }
 .btn-primary {
   background: var(--color-accent-fill); color: var(--color-on-fill);
   font-family: var(--font-display); font-weight: 400; font-synthesis: none;
@@ -213,13 +213,16 @@ body {
   font-size: clamp(2.5rem, 11vw, 3rem);
 }
 .marca > span:not(.sr-only) { margin-right: -0.14em; }
-@media (min-width: 1024px) { .marca { font-size: clamp(3.5rem, 5.3vw, 5.5rem); } }
+@media (min-width: 1024px) { .marca { font-size: clamp(3.5rem, 5.3vw, 4.75rem); } }
 
 /* A foto do herói: ele de costas, no centro. No celular ocupa a faixa toda; no computador
    fica em 90% da largura e some nas laterais, onde fica o nome. */
+.hero-faixa { inset: 0; }
 .hero-faixa img { object-position: 46% 26%; filter: brightness(0.74) contrast(1.15); }
+/* A foto não passa da largura da página (1320px): o nome fica na margem da página, então
+   numa tela larga a foto crescendo jogaria o rosto dele em cima do "Lucena". */
 @media (min-width: 1024px) {
-  .hero-faixa { left: 5vw; right: 5vw; mask-image: linear-gradient(to right, transparent, #000 18%, #000 82%, transparent); }
+  .hero-faixa { left: max(5vw, calc(50% - 660px)); right: max(5vw, calc(50% - 660px)); mask-image: linear-gradient(to right, transparent, #000 18%, #000 82%, transparent); }
   .hero-faixa img { object-position: 50% 26%; }
 }
 
@@ -229,9 +232,6 @@ body {
   .band-foto { mask-image: linear-gradient(to right, transparent 0%, #000 22%); }
 }
 
-/* O disco gira a 33⅓ rpm: uma volta a cada 1,8 s. */
-.disco-giro { animation: girar 1.8s linear infinite paused; }
-.disco[data-tocando="true"] .disco-giro { animation-play-state: running; }
 
 /* A barra fixa do celular: o botão de contratar nunca sai da tela. */
 body:has(.barra-contratar) { padding-bottom: 76px; }
@@ -266,7 +266,6 @@ body:has(.barra-contratar) { padding-bottom: 76px; }
 
 /* ── Movimento ──────────────────────────────────────────────── */
 @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
-@keyframes girar { to { transform: rotate(360deg); } }
 @keyframes sobe { from { opacity: 0; transform: translateY(28%); } to { opacity: 1; transform: none; } }
 @keyframes abre { from { scale: 1.09; } to { scale: 1; } }
 @keyframes entra { from { scale: 1.16; } to { scale: 1; } }
@@ -289,7 +288,7 @@ body:has(.barra-contratar) { padding-bottom: 76px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rise, .fade, .sobe, .foto-abre, .disco-giro { animation: none !important; }
+  .rise, .fade, .sobe, .foto-abre { animation: none !important; }
   .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
   .btn:hover, .btn:active { transform: none; }
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
