@@ -205,25 +205,35 @@ body {
 .on-dark .btn-ghost { color: #fff; }
 .on-dark :focus-visible { outline-color: var(--color-brass); }
 
-/* O nome no herói, como marca: uma letra fina, em caixa alta e espaçada, numa cor só.
-   O espaço depois da última letra sai pela direita, para o "Lucena" fechar na margem. */
-.marca {
-  font-family: var(--font-marca), var(--font-sans); font-weight: 300; line-height: 1;
-  text-transform: uppercase; letter-spacing: 0.14em; white-space: nowrap;
-  font-size: clamp(2.5rem, 11vw, 3rem);
-}
-.marca > span:not(.sr-only) { margin-right: -0.14em; }
-@media (min-width: 1024px) { .marca { font-size: clamp(3.5rem, 5.3vw, 4.75rem); } }
+/* O menu do computador, na mesma letra do nome. */
+.menu-marca { font-family: var(--font-marca), var(--font-sans); font-weight: 500; font-size: 0.8125rem; letter-spacing: 0.16em; text-transform: uppercase; }
 
-/* A foto do herói: ele de costas, no centro. No celular ocupa a faixa toda; no computador
-   fica em 90% da largura e some nas laterais, onde fica o nome. */
+/* O herói, na edição do Pedro (10/11/2026): o nome inteiro numa linha, firme, sobre os
+   ombros dele, e uma frase curta embaixo. */
+.heroi { --h: max(540px, 72svh); height: var(--h); }
+@media (min-width: 1024px) { .heroi { --h: clamp(620px, 78dvh, 760px); } }
+.marca {
+  font-family: var(--font-marca), var(--font-sans); font-weight: 500; line-height: 0.92;
+  text-transform: uppercase; letter-spacing: 0.02em; white-space: nowrap;
+  font-size: clamp(3rem, 15vw, 4.5rem);
+}
+@media (min-width: 1024px) { .marca { font-size: clamp(5rem, 8.4vw, 8.5rem); } }
+.frase {
+  font-family: var(--font-marca), var(--font-sans); font-weight: 300;
+  font-size: 0.9375rem; letter-spacing: 0.08em; line-height: 1.5; max-width: 30ch; text-wrap: balance;
+}
+@media (min-width: 1024px) { .frase { font-size: 1.0625rem; max-width: none; } }
+
+/* A foto: no celular ocupa a faixa toda. No computador aparece inteira na altura da faixa,
+   com a cabeça dele um pouco à esquerda do centro, e some nas laterais. */
 .hero-faixa { inset: 0; }
 .hero-faixa img { object-position: 46% 26%; filter: brightness(0.74) contrast(1.15); }
-/* A foto não passa da largura da página (1320px): o nome fica na margem da página, então
-   numa tela larga a foto crescendo jogaria o rosto dele em cima do "Lucena". */
 @media (min-width: 1024px) {
-  .hero-faixa { left: max(5vw, calc(50% - 660px)); right: max(5vw, calc(50% - 660px)); mask-image: linear-gradient(to right, transparent, #000 18%, #000 82%, transparent); }
-  .hero-faixa img { object-position: 50% 26%; }
+  .hero-faixa {
+    inset: 0 auto; width: calc(var(--h) * 20 / 11);
+    left: calc(50% - min(9vw, 130px) - var(--h) * 10 / 11);
+    mask-image: linear-gradient(to right, transparent, #000 22%, #000 78%, transparent);
+  }
 }
 
 /* A foto dissolve no preto, sem emenda: embaixo no celular, à esquerda no computador. */

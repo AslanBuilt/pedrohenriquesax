@@ -72,7 +72,7 @@ export function SiteHeader({ cartCount = 0, loggedIn = false, whatsapp = "", ema
                   key={l.href}
                   href={l.href}
                   aria-current={active ? "page" : undefined}
-                  className={`text-[0.9375rem] font-medium transition-colors ${transparente ? "text-white/85 hover:text-white" : active ? "text-accent" : "text-muted hover:text-paper"}`}
+                  className={`menu-marca transition-colors ${transparente ? "text-white/85 hover:text-white" : active ? "text-accent" : "text-muted hover:text-paper"}`}
                 >
                   {l.label}
                 </Link>

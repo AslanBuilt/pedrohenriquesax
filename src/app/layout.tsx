@@ -16,10 +16,10 @@ const hanken = Hanken_Grotesk({
   variable: "--font-hanken",
 });
 
-/* Só o nome no herói, fino e espaçado como uma marca (a 85, escolhida pelo Pedro em 09/11/2026). */
+/* O nome no herói e o menu, como marca (edição do próprio Pedro, 10/11/2026). */
 const outfit = Outfit({
   subsets: ["latin"],
-  weight: "300",
+  weight: ["300", "500"],
   display: "swap",
   variable: "--font-marca",
 });

@@ -3,11 +3,9 @@ import type { Settings } from "@/lib/settings";
 import { HireButton } from "@/components/HireButton";
 
 /**
- * Uma faixa preta com ele de costas no centro e o nome como marca: o primeiro nome de um
- * lado, o sobrenome do outro, numa cor só. Logo abaixo já começa a página clara. Sem o disco
- * do solo: o Pedro pediu para tirar, em 09/11/2026.
- * É a versão 85, escolhida pelo Pedro em 09/11/2026. "Saxofonista em São Paulo" fica só
- * para leitores de tela e buscadores.
+ * Faixa preta com ele de costas, o nome inteiro numa linha por cima dos ombros e uma frase
+ * embaixo. É a edição que o próprio Pedro montou em 10/11/2026 a partir da 85, que ele achou
+ * "meio vazia". "Saxofonista em São Paulo" fica só para leitores de tela e buscadores.
  *
  * Fixa no código porque o texto branco depende do fundo preto dela.
  */
@@ -16,27 +14,28 @@ export function Hero({ settings: s }: { settings: Settings }) {
   const sobrenome = resto.join(" ");
 
   return (
-    <section id="heroi" className="on-dark relative isolate flex h-[max(520px,70svh)] flex-col justify-end overflow-hidden bg-night lg:h-[clamp(560px,64dvh,700px)]">
+    <section id="heroi" className="heroi on-dark relative isolate flex flex-col justify-end overflow-hidden bg-night">
       <div className="hero-faixa absolute -z-10">
         <Image
           src="/fotos/credenciais.jpg"
-          alt={`${s.name} de costas, com o saxofone, diante da plateia`}
+          alt={`${s.name} de costas, com o saxofone`}
           fill
           priority
-          sizes="(max-width: 1023px) 100vw, 90vw"
+          sizes="(max-width: 1023px) 100vw, 1400px"
           className="foto-abre object-cover"
         />
       </div>
 
-      <div className="wrap pb-10 lg:pb-11">
-        <h1 className="sobe marca flex flex-col text-white lg:flex-row lg:justify-between">
-          <span>{nome}</span>{" "}
-          <span className="self-end lg:self-auto">{sobrenome}</span>
+      <div className="wrap pb-10 lg:pb-12">
+        <h1 className="sobe marca text-white">
+          <span className="block lg:inline">{nome}</span>{" "}
+          <span className="block lg:inline">{sobrenome}</span>
           <span className="sr-only">, {s.tagline.toLowerCase()} em {s.city}</span>
         </h1>
-        <span className="sobe mt-10 hidden lg:flex" style={{ animationDelay: "220ms" }}>
-          <HireButton className="btn btn-primary btn-xl" />
-        </span>
+        <div className="sobe mt-5 flex items-center justify-between gap-8 lg:mt-7" style={{ animationDelay: "220ms" }}>
+          <p className="frase text-white/75">Do palco ao estúdio, do jazz ao pop. Música com identidade, em cada nota.</p>
+          <HireButton className="btn btn-primary btn-lg hidden shrink-0 lg:inline-flex" />
+        </div>
       </div>
     </section>
   );

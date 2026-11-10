@@ -83,17 +83,18 @@ Acesso local do painel: `pedro@pedrolucenasax.com` / `pedro2026` (trocar em prod
 Referências do Pedro em 05/11/2026: ameliasaz.com (simplicidade, grade de fotos) e livesax.com.br
 (movimento, faixas claras e escuras).
 
-- Tipografia: **DM Serif Display** nos títulos, **Hanken Grotesk** no corpo. Sem letra cursiva:
+- Tipografia: **DM Serif Display** nos títulos, **Hanken Grotesk** no corpo, **Outfit** no nome do herói e no menu. Sem letra cursiva:
   testada no nome e rejeitada em 05/11/2026. Bodoni também: difícil de ler sobre o preto.
-- **Herói:** a versão 85, escolhida pelo Pedro em 09/11/2026 entre 88 maquetes. Faixa preta de ~64% da tela com
-  `credenciais.jpg` (ele de costas) no centro, sumindo nas laterais; o nome em **Outfit 300**, caixa alta e espaçada,
-  branco, numa cor só, como marca: "Pedro" à esquerda e "Lucena" à direita, logo acima do Contratar e do disco. No celular,
-  "Pedro" em cima à esquerda e "Lucena" embaixo à direita. Sem o disco do solo, a pedido dele. A página clara já aparece abaixo da faixa. Ele pediu uma cor só
-  e letra de logomarca, com referências de portfólio em preto e branco ("simples funciona"). A imagem de link
-  (`opengraph-image.tsx`) usa a mesma foto e o mesmo nome dividido. "Saxofonista em São Paulo" só para leitor de tela e busca.
+- **Herói:** a edição que o próprio Pedro montou em 10/11/2026 a partir da 85 (que ele achou "meio vazia").
+  Faixa preta com `credenciais.jpg` (ele de costas) inteira na altura da faixa, a cabeça um pouco à esquerda do
+  centro; "PEDRO LUCENA" numa linha só em **Outfit 500**, branco, sobre os ombros (abaixo do queixo: a faixa tem
+  de 620 a 760px para isso); embaixo a frase "Do palco ao estúdio, do jazz ao pop. Música com identidade, em cada
+  nota." e o Contratar à direita. No celular o nome quebra em duas linhas. A edição dele tinha "SAXOFONISTA" em
+  cima do nome e uma logo no canto: o primeiro ficou de fora pela regra do eyebrow, a logo falta o arquivo.
+  A imagem de link (`opengraph-image.tsx`) repete o herói. Antes (09/11) foi a 85, com o nome dividido em volta dele.
 - **Solo:** o disco que tocava o solo no herói saiu em 09/11/2026, a pedido do Pedro. O áudio
   `public/audio/solo-bigband.m4a` continua no repositório.
-- **Menu:** no computador, Sobre, Eventos e Mentoria ficam à direita, junto dos ícones (pedido do Pedro em 09/11/2026).
+- **Menu:** no computador, à direita junto dos ícones, em Outfit caixa alta espaçada (pedidos do Pedro em 09 e 10/11/2026).
 - **Seções:** fundos alternados entre preto e claro, nunca dois iguais em seguida, e nada de
   faixas baixas soltas. O rodapé é preto, então a última seção de cada página é clara.
 - **Ficha técnica e apoios:** só na home, numa seção só, sem repetir em `/sobre`. Mostra os nomes;
