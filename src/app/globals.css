@@ -213,10 +213,13 @@ body {
    mãos, e numa tela mais larga que isso fica centrada, sumindo nas laterais. O nome atravessa
    o peito, abaixo da barba. */
 .heroi { --h: max(560px, 80svh); height: var(--h); }
-.hero-faixa { top: 0; left: 0; right: 0; height: 122%; }
-.hero-faixa img { object-position: 42% 0; filter: grayscale(1) brightness(0.62) contrast(1.12); }
+/* No celular a foto mostra ele e o sax lado a lado: a faixa tem a proporção da foto (3 por 2),
+   larga o bastante para ir do ombro esquerdo dele ao suporte do sax, e some embaixo no preto. */
+.hero-faixa { top: 44px; left: -45vw; width: 180vw; height: auto; aspect-ratio: 3 / 2;
+  mask-image: linear-gradient(to bottom, #000 72%, transparent 100%); }
+.hero-faixa img { object-position: 50% 0; filter: grayscale(1) brightness(0.62) contrast(1.12); }
 .heroi::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background: radial-gradient(ellipse 75% 85% at 45% 35%, transparent 40%, rgb(10 10 10 / 0.75) 100%); }
+  background: radial-gradient(ellipse 80% 85% at 55% 40%, transparent 45%, rgb(10 10 10 / 0.7) 100%); }
 .hero-texto { position: absolute; inset: auto 0 2.5rem; text-align: center; }
 .hero-texto > .sobe { display: block; }
 .marca {
@@ -230,9 +233,11 @@ body {
 }
 @media (min-width: 1024px) {
   .heroi { --h: clamp(480px, 100vw / 2.27, 760px); }
+  /* A faixa é um pouco mais estreita que a foto (1,6 por 1 contra 1,5): corta só o pé da
+     foto, então ele aparece da cabeça ao chão e o sax inteiro, do bocal ao suporte. */
   .hero-faixa {
-    height: 100%; width: min(100%, var(--h) * 2.27); left: 50%; right: auto; translate: -50% 0;
-    mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+    top: 0; height: 100%; width: min(100%, var(--h) * 1.6); aspect-ratio: auto; left: 50%; right: auto; translate: -50% 0;
+    mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
   }
   .hero-faixa img { object-position: 50% 0; }
   .hero-texto { inset: auto 0 auto; top: 47%; }
