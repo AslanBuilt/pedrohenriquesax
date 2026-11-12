@@ -4,11 +4,12 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { HireButton } from "@/components/HireButton";
 import { HireDialog } from "@/components/HireDialog";
+import { Monograma } from "@/components/Monograma";
 import { ShoppingBagOpen, List, X, UserCircle } from "@phosphor-icons/react";
 
 /**
  * Uma linha, sempre. 68px e branca, exceto sobre o herói da home: ali é
- * transparente e não repete o nome, que o herói já mostra em grande. O botão de contratar fica
+ * transparente e mostra só o monograma, sem o nome, que o herói já mostra em grande. O botão de contratar fica
  * sempre: desde 10/11/2026 o herói não tem botão, como na edição do Pedro.
  * Abaixo de 1024px vira gaveta em tela cheia; o botão de contratar e o carrinho
  * continuam visíveis na barra.
@@ -60,8 +61,9 @@ export function SiteHeader({ cartCount = 0, loggedIn = false, whatsapp = "", ema
         transparente ? "on-dark border-transparent bg-transparent" : "border-black/10 bg-white"
       }`}>
         <div className="wrap flex h-[68px] items-center justify-between gap-4">
-          <Link href="/" className={`d-m flex min-h-[44px] shrink-0 items-center whitespace-nowrap text-paper transition-opacity duration-300 ${transparente ? "invisible opacity-0" : "opacity-100"}`}>
-            Pedro Lucena
+          <Link href="/" aria-label="Pedro Lucena, início" className={`flex min-h-[44px] shrink-0 items-center gap-3 whitespace-nowrap ${transparente ? "text-white" : "text-paper"}`}>
+            <Monograma className="h-9 w-auto" />
+            <span aria-hidden="true" className={`d-m transition-opacity duration-300 ${transparente ? "invisible opacity-0" : "opacity-100"}`}>Pedro Lucena</span>
           </Link>
 
           <div className="flex items-center gap-8">

@@ -206,7 +206,7 @@ body {
 .on-dark :focus-visible { outline-color: var(--color-brass); }
 
 /* O menu do computador, na mesma letra do nome. */
-.menu-marca { font-family: var(--font-marca), var(--font-sans); font-weight: 500; font-size: 0.9375rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.menu-marca { font-family: var(--font-marca), var(--font-sans); font-weight: 300; font-size: 0.9375rem; letter-spacing: 0.06em; text-transform: uppercase; }
 
 /* O herói, na edição do Pedro (10/11/2026). No computador a faixa tem a proporção da edição
    dele (2,27 por 1) até 760px de altura; a foto mostra o terço de cima do g06, da cabeça às

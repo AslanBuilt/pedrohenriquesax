@@ -91,11 +91,13 @@ Referências do Pedro em 05/11/2026: ameliasaz.com (simplicidade, grade de fotos
   jazz ao pop. Música com identidade, em cada nota." A faixa tem a proporção da edição dele (2,27:1) até 760px de
   altura; numa tela mais larga a foto fica centrada e some nas laterais. Sem botão no herói: o Contratar do
   cabeçalho aparece sobre ele. No celular o nome quebra em duas linhas. A edição dele tinha "SAXOFONISTA" em cima
-  do nome e uma logo no canto: o primeiro ficou de fora pela regra do eyebrow, a logo falta o arquivo.
+  do nome e uma logo no canto: o primeiro ficou de fora pela regra do eyebrow. A logo (monograma PL num
+  hexágono, `src/components/Monograma.tsx`) foi vetorizada da arte que ele mandou em 10/11/2026 e fica no canto do
+  cabeçalho; sobre o herói aparece sozinha, nas outras páginas com o nome ao lado. Trocar pelo original quando chegar.
   A imagem de link (`opengraph-image.tsx`) repete o herói.
 - **Solo:** o disco que tocava o solo no herói saiu em 09/11/2026, a pedido do Pedro. O áudio
   `public/audio/solo-bigband.m4a` continua no repositório.
-- **Menu:** no computador, à direita junto dos ícones, em Outfit caixa alta espaçada (pedidos do Pedro em 09 e 10/11/2026).
+- **Menu:** no computador, à direita junto dos ícones, em Outfit 300 caixa alta espaçada (pedidos do Pedro em 09 e 10/11/2026; ele pediu a letra mais fina).
 - **Seções:** fundos alternados entre preto e claro, nunca dois iguais em seguida, e nada de
   faixas baixas soltas. O rodapé é preto, então a última seção de cada página é clara.
 - **Ficha técnica e apoios:** só na home, numa seção só, sem repetir em `/sobre`. Mostra os nomes;
