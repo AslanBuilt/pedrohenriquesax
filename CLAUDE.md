@@ -103,9 +103,13 @@ Referências do Pedro em 05/11/2026: ameliasaz.com (simplicidade, grade de fotos
   faixas baixas soltas. O rodapé é preto, então a última seção de cada página é clara.
 - **Ficha técnica e apoios:** só na home, numa seção só, sem repetir em `/sobre`. Mostra os nomes;
   a observação e o período cadastrados no painel não aparecem.
+  Desde 11/11/2026 em cartões que viram (`FichaCartao.tsx`): frente preta de capa de disco com o número de
+  nomes, verso claro com os nomes. Nunca quatro numa linha: com cinco grupos o apoio é o sexto cartão (3 por 2).
 - **Apoios** (`src/components/home/Apoios.tsx`): Tokai, Souza Lima e La Musica, em tinta única.
   Estão no código, não no painel.
-- **Movimento:** scroll-driven em CSS (`animation-timeline`). Sem suporte, fica parado.
+- **Movimento:** scroll-driven em CSS (`animation-timeline`). Sem suporte, fica parado. Detalhes de
+  encanto, poucos e de propósito: os cartões da ficha acenam uma vez ao aparecer, o selo do rodapé gira
+  como disco sob o mouse, o Pix copiado ganha um visto, e o 404 diz "Essa nota não está na partitura".
 
 ## Conteúdo
 

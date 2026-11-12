@@ -21,7 +21,7 @@ export function Hero({ settings: s }: { settings: Settings }) {
           alt={`${s.name} sentado, com o saxofone tenor no suporte ao lado`}
           fill
           priority
-          sizes="(max-width: 1023px) 160vw, 1730px"
+          sizes="(max-width: 1023px) 175vw, 1330px"
           className="foto-abre object-cover"
         />
       </div>

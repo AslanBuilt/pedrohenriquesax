@@ -55,8 +55,8 @@ export function SiteFooter({ settings: s, mostrarConta = false }: { settings: Se
             {CONTA.filter(([href]) => href !== "/conta" || mostrarConta).map(([href, label]) => <li key={href}><Link href={href} className={LINK}>{label}</Link></li>)}
           </ul>
 
-          <div className="relative hidden h-36 w-36 text-brass lg:block">
-            <Seal className="h-full w-full" />
+          <div className="selo relative hidden h-36 w-36 text-brass lg:block">
+            <Seal className="selo-gira h-full w-full" />
             <span className="d-s absolute inset-0 flex flex-col items-center justify-center text-center !leading-[1.1] text-white">
               {s.name.split(" ").map((w) => <span key={w} className="block">{w}</span>)}
             </span>

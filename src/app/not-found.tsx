@@ -19,9 +19,9 @@ const SAIDAS: [string, string, string][] = [
 export default function NotFound() {
   return (
     <main className="wrap-narrow flex min-h-[100dvh] flex-col justify-center py-24">
-      <h1 className="d-l text-paper mt-4">Essa página não existe</h1>
+      <h1 className="d-l text-paper mt-4">Essa nota não está na partitura</h1>
       <p className="mt-6 text-muted prose-w">
-        O endereço pode ter mudado, ou o link que te trouxe até aqui veio com um pedaço a menos.
+        Essa página não existe. O endereço pode ter mudado, ou o link que te trouxe até aqui veio com um pedaço a menos.
       </p>
 
       <ul className="mt-12 border-t border-black/10">
