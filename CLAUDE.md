@@ -89,7 +89,7 @@ Referências do Pedro em 05/11/2026: ameliasaz.com (simplicidade, grade de fotos
   sentado com o sax no suporte, em preto e branco; "PEDRO LUCENA" numa linha só em **Outfit 500**, branco, de
   margem a margem sobre o peito, abaixo da barba; embaixo, centrada e espaçada, a frase "Do palco ao estúdio, do
   jazz ao pop. Música com identidade, em cada nota." O sax tem que aparecer sempre (pedido do Renato, 11/11/2026):
-  no computador a foto vai da cabeça ao chão, numa faixa de 1,6:1 centrada que some nas laterais; no celular ela
+  no computador a foto vai da cabeça ao suporte do sax, numa faixa de 1,75:1 centrada que some nas laterais; no celular ela
   mostra ele e o sax lado a lado e some embaixo no preto. Sem botão no herói: o Contratar do
   cabeçalho aparece sobre ele. No celular o nome quebra em duas linhas. A edição dele tinha "SAXOFONISTA" em cima
   do nome e uma logo no canto: o primeiro ficou de fora pela regra do eyebrow. A logo (monograma PL num

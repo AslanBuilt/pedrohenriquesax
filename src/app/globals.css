@@ -215,7 +215,7 @@ body {
 .heroi { --h: max(560px, 80svh); height: var(--h); }
 /* No celular a foto mostra ele e o sax lado a lado: a faixa tem a proporção da foto (3 por 2),
    larga o bastante para ir do ombro esquerdo dele ao suporte do sax, e some embaixo no preto. */
-.hero-faixa { top: 44px; left: -45vw; width: 180vw; height: auto; aspect-ratio: 3 / 2;
+.hero-faixa { top: 44px; left: -34vw; width: 172vw; height: auto; aspect-ratio: 3 / 2;
   mask-image: linear-gradient(to bottom, #000 72%, transparent 100%); }
 .hero-faixa img { object-position: 50% 0; filter: grayscale(1) brightness(0.62) contrast(1.12); }
 .heroi::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
@@ -232,11 +232,13 @@ body {
   font-size: 0.875rem; letter-spacing: 0.2em; line-height: 1.6; max-width: 26ch; text-wrap: balance;
 }
 @media (min-width: 1024px) {
-  .heroi { --h: clamp(480px, 100vw / 2.27, 760px); }
-  /* A faixa é um pouco mais estreita que a foto (1,6 por 1 contra 1,5): corta só o pé da
-     foto, então ele aparece da cabeça ao chão e o sax inteiro, do bocal ao suporte. */
+  .heroi { --h: clamp(560px, 100vw / 2.27, 760px); }
+  /* A faixa é mais larga que a foto (1,75 por 1 contra 1,5): a foto aproxima, cortando só o
+     pé, e o sax continua inteiro, do bocal ao suporte. A cabeça fica abaixo do cabeçalho, e ele
+     e o sax, juntos, ficam no centro da tela. No mínimo 560px de altura, para a 1024 não
+     apertar a cabeça contra o menu. */
   .hero-faixa {
-    top: 0; height: 100%; width: min(100%, var(--h) * 1.6); aspect-ratio: auto; left: 50%; right: auto; translate: -50% 0;
+    top: 0; height: 100%; width: min(100%, var(--h) * 1.75); aspect-ratio: auto; left: 50%; right: auto; translate: -50% 0;
     mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
   }
   .hero-faixa img { object-position: 50% 0; }
