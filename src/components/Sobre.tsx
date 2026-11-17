@@ -28,7 +28,7 @@ export function Sobre({ settings: s }: { settings: Settings }) {
   return (
     <>
       <section className="sobre-faixa on-dark relative isolate flex items-center justify-center overflow-hidden bg-night">
-        <Image src="/fotos/g06.jpg" alt="" fill priority sizes="100vw" className="foto-abre -z-10 object-cover" />
+        <Image src="/fotos/g09.jpg" alt="" fill priority sizes="100vw" className="foto-abre -z-10 object-cover" />
         <h1 className="sobe marca text-white">Sobre</h1>
       </section>
 
