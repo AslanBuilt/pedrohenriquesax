@@ -247,6 +247,15 @@ body {
   .frase { font-size: clamp(0.875rem, 1.15vw, 1.0625rem); letter-spacing: 0.32em; max-width: none; margin-top: 1rem; }
 }
 
+/* Sobre: a faixa da montagem do Pedro (16/11/2026), foto escurecida e SOBRE no meio, em
+   Outfit como o nome do herói. Ele à esquerda, o sax à direita. */
+.sobre-faixa { height: clamp(340px, 100vw / 2.3, 620px); }
+.sobre-faixa img { object-position: 50% 22%; filter: grayscale(1) brightness(0.5) contrast(1.1); }
+.sobre-faixa .marca { font-size: min(18vw, 9rem); letter-spacing: 0.04em; padding-top: 2rem; }
+/* As falas do Pedro: serifa, um fio de ouro à esquerda, sem caixa. */
+.sobre-fala { border-left: 2px solid var(--color-accent); padding-left: 1.25rem; font-style: italic; }
+.on-dark .sobre-fala { border-color: var(--color-brass); }
+
 /* A foto dissolve no preto, sem emenda: embaixo no celular, à esquerda no computador. */
 .band-foto { mask-image: linear-gradient(to bottom, #000 80%, transparent 100%); }
 @media (min-width: 1024px) {

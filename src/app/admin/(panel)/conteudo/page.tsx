@@ -12,7 +12,7 @@ export default async function Conteudo() {
         <AdminForm action={saveContent}>
           <Field label="Bio curta" name="bioShort" textarea defaultValue={s.bioShort} hint="Aparece no herói, abaixo do nome. Uma ou duas linhas." />
           <Field label="Bio média" name="bioMedium" textarea defaultValue={s.bioMedium} hint="Reserva, para materiais de imprensa." />
-          <Field label="Bio longa" name="bioLong" textarea defaultValue={s.bioLong} hint="Seção Sobre. Separe parágrafos com uma linha em branco." />
+          <Field label="Bio longa" name="bioLong" textarea defaultValue={s.bioLong} hint="Não aparece no site: desde 17/11/2026 o texto do Sobre é o documento do Pedro, no código." />
           <Field label="Texto de Eventos" name="eventsText" textarea defaultValue={s.eventsText} />
           <Field label="Texto da Mentoria" name="mentoriaText" textarea defaultValue={s.mentoriaText} />
           <div className="grid gap-5 sm:grid-cols-2">

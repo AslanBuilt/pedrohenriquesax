@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getSettings } from "@/lib/settings";
 import { Chrome } from "@/components/Chrome";
-import { About } from "@/components/home/About";
+import { Sobre as Conteudo } from "@/components/Sobre";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
@@ -14,7 +14,7 @@ export default async function Sobre() {
   const settings = await getSettings();
   return (
     <Chrome>
-      <About settings={settings} />
+      <Conteudo settings={settings} />
     </Chrome>
   );
 }

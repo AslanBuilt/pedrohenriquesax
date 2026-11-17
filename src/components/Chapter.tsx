@@ -10,8 +10,8 @@ export function Chapter({ foto, pos = "50% 20%", escuro = false, titulo, childre
 }) {
   return (
     <section className={`section ${escuro ? "on-dark bg-night" : ""}`}>
-      <div className="wrap grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
-        <div className={`relative aspect-[4/3] overflow-hidden rounded-[2px] lg:aspect-[5/6] ${escuro ? "lg:order-2" : ""}`}>
+      <div className="wrap grid items-start gap-8 lg:grid-cols-2 lg:gap-16">
+        <div className={`relative aspect-[4/3] overflow-hidden rounded-[2px] lg:sticky lg:top-28 lg:aspect-[5/6] ${escuro ? "lg:order-2" : ""}`}>
           <Image src={foto} alt="" fill sizes="(max-width:1023px) 100vw, 50vw"
             className="foto-entra object-cover grayscale" style={{ objectPosition: pos }} />
         </div>
